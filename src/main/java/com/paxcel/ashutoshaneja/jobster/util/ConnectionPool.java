@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class ConnectionPool {
 
 	private List<Connection> usedConnections = new ArrayList<>();
-	private int INITIAL_POOL_SIZE = 5;
+	private int INITIAL_POOL_SIZE = 2;
 	private List<Connection> pool;
 
 	public boolean createInitialPool(String driverClass, String url, String user, String password) throws SQLException, ClassNotFoundException {

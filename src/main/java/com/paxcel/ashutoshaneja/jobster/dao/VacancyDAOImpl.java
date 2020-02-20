@@ -37,14 +37,15 @@ public class VacancyDAOImpl implements VacancyDAO {
 
 			System.out.println("Company ID "+companyID);
 
-			final String addVacancySQL = "INSERT INTO VACANCY VALUES(?,?,?,?,?)";
+			final String addVacancySQL = "INSERT INTO VACANCY(USERNAME, COMPANY_ID, VACANCY_COUNT, LOCATION, SKILL, EXPERIENCE) VALUES(?,?,?,?,?,?)";
 			PreparedStatement vacancyPreparedStmt = fetchedConnection.prepareStatement(addVacancySQL);
 
-			vacancyPreparedStmt.setInt(1, companyID);
-			vacancyPreparedStmt.setInt(2, vacancy.getVacancyCount());
-			vacancyPreparedStmt.setString(3, vacancy.getLocation());
-			vacancyPreparedStmt.setString(4, vacancy.getSkill());
-			vacancyPreparedStmt.setInt(5, vacancy.getExperience());
+			vacancyPreparedStmt.setString(1, vacancy.getUsername());
+			vacancyPreparedStmt.setInt(2, companyID);
+			vacancyPreparedStmt.setInt(3, vacancy.getVacancyCount());
+			vacancyPreparedStmt.setString(4, vacancy.getLocation());
+			vacancyPreparedStmt.setString(5, vacancy.getSkill());
+			vacancyPreparedStmt.setInt(6, vacancy.getExperience());
 
 			int i = vacancyPreparedStmt.executeUpdate();  
 			appLogger.info(this.getClass().getSimpleName() +": "+ i+" vacancy inserted");  

@@ -1,0 +1,66 @@
+body {
+  background-color: #111111;
+}
+
+.board {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  height: 150px;
+  width: 500px;
+  margin: -75px 0 0 -250px;
+  padding: 20px;
+  
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 0 0 80px red, 0 0 30px FireBrick, 0 0 6px DarkRed;
+  color: red;
+}
+
+#error {
+  color: #fff;
+  font: 75px/75px Monoton, cursive;
+  text-shadow: 0 0 80px #ffffff, 0 0 30px #008000, 0 0 6px #0000ff;
+}
+
+#code{
+	font: 65px/65px Monoton, cursive;
+	margin-top: 100px;
+	letter-spacing: 4px;
+}
+
+button {
+ 
+  color: white;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+button:hover, button:focus {
+  border-color: var(--hover);
+  color: #fff;
+}
+button {
+  	
+  background: none;
+  border: 2px solid;
+  font: inherit;
+  line-height: 1;
+  margin: 2.5em;
+  padding: 1em 2em;
+  cursor: pointer;
+}
+
+.raise:hover,
+.raise:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  -webkit-transform: translateY(-0.25em);
+          transform: translateY(-0.25em);
+}
+.raise {
+	border-color: red;
+	text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bolder;
+  --color: #ffa260;
+  --hover: #ff8080;
+}

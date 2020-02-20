@@ -9,6 +9,7 @@ public class Vacancy implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	private int vacancyID;
 	private String username;
 	private String companyName;
 	private int vacancyCount;
@@ -54,6 +55,12 @@ public class Vacancy implements Serializable {
 	}
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
+	}
+	public int getVacancyID() {
+		return vacancyID;
+	}
+	public void setVacancyID(int vacancyID) {
+		this.vacancyID = vacancyID;
 	}
 
 }

@@ -3,29 +3,29 @@ package com.paxcel.ashutoshaneja.jobster.controller;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.paxcel.ashutoshaneja.jobster.model.UserVO;
 import com.paxcel.ashutoshaneja.jobster.service.LoginManager;
 
 @Controller
 //@RequestMapping("/login")
 @SessionAttributes("user")
 public class LoginController 
-{
+{	
+	@Autowired 
+	Logger appLogger;
+	
 	@Resource
 	LoginManager manager;
 	
@@ -47,40 +47,9 @@ public class LoginController
 		  return model;
 
 		}
-
-	
-//	  @RequestMapping(method = RequestMethod.GET) 
-//	  public String setupForm(Model model) { 
-//		  UserVO userVO = new UserVO(); 
-//		  model.addAttribute("user", userVO);
-//	  return "login"; }
-	 
-
-	
-//	@RequestMapping(value = "/login", method = RequestMethod.GET)
-//	public String submitForm(Model model, 
-//			@ModelAttribute("userVO") UserVO userVO, BindingResult result, SessionStatus status) {
-//
-//		//Store the employee information in database
-//		if(manager.handleLoginRequest(userVO)) { 
-//			status.setComplete();
-//			if(manager.sendResponse(userVO).equalsIgnoreCase("Seeker")) { 
-//				return "redirect:/seeker/feed/"+userVO.getUsername(); 
-//			} 
-//			else { 
-//				return "redirect:/recruiter/feed/"+userVO.getUsername(); 
-//			} 
-//		} 
-//		else { 
-//			String output = "Incorrect Username/Password"; 
-//			model.addAttribute("output", output); 
-//			return "login"; 
-//		} 
-//	}
 	
 	@RequestMapping("/sendLoginResponse")
     public String defaultAfterLogin(HttpServletRequest request) {
-		 ModelAndView model = new ModelAndView();
 		 String username="";
 		  Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		  if (!(auth instanceof AnonymousAuthenticationToken)) {
@@ -89,8 +58,10 @@ public class LoginController
 		  }
 		
         if (request.isUserInRole("ROLE_SEEKER")) {
+        	appLogger.info("'"+username+"' Login Success - Returning Seeker feed ");
         	return "redirect:/seeker/feed/"+username;
         }
+        appLogger.info("'"+username+"' Login Success - Returning Recruiter feed ");
         return "redirect:/recruiter/feed/"+username;
     }
 	 

@@ -9,37 +9,13 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Login to Jobster</title>
-<style>
-.error {
-	padding: 15px;
-	margin-bottom: 20px;
-	border: 1px solid transparent;
-	border-radius: 4px;
-	color: #a94442;
-	background-color: #f2dede;
-	border-color: #ebccd1;
-}
-
-.msg {
-	padding: 15px;
-	margin-bottom: 20px;
-	border: 1px solid transparent;
-	border-radius: 4px;
-	color: #31708f;
-	background-color: #d9edf7;
-	border-color: #bce8f1;
-}
-
-#login-box {
-	width: 300px;
-	padding: 20px;
-	margin: 100px auto;
-	background: #fff;
-	-webkit-border-radius: 2px;
-	-moz-border-radius: 2px;
-	border: 1px solid #000;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="resources/css/login&signup.css">
+<link rel="stylesheet" href="/jobster/resources/css/notification.css">
+<link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script type="text/javascript" src="resources/js/login&signup.js"></script>
+<script type="text/javascript" src="resources/js/backReload.js"></script>
 </head> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- <script type="text/javascript">
@@ -65,7 +41,7 @@ $(document).ready(function(){
 
 	<h1>Spring Security Login Form (Database Authentication)</h1>
 
-	<div id="login-box">
+<%-- 	<div id="login-box">
 		
 		<h2>Login with Username and Password</h2>
 
@@ -74,28 +50,7 @@ $(document).ready(function(){
 		</c:if>
 		<c:if test="${not empty msg}">
 			<div class="msg">${msg}</div>
-		</c:if>
-	
-	
-<%-- 	<form:form method="post" action="<c:url value='/j_spring_security_check' />" modelAttribute="user" name="loginForm">
-		<table>
-			<tr>
-				<td>Username</td>
-				<td><form:input path="username" /></td>
-			</tr>
-			<tr>
-				<td>Password</td>
-				<td><form:password path="password" /></td>
-			</tr>
-			<tr>
-				<td colspan="2"><input type="submit" value="Signin to Jobster" /></td>
-			</tr>
-			<tr>
-				<td colspan="2">${output}</td>
-			</tr>
-		</table>
-	</form:form> --%>
-	
+		</c:if>	
 	
 		<form name='loginForm' action="<c:url value='/j_spring_security_check' />" method='POST'>
 
@@ -118,7 +73,102 @@ $(document).ready(function(){
 			value="${_csrf.token}" />
 
 		</form>
-	</div>
+	</div> --%>
+
+	
+	
+	
+	<div class="form">
+      
+      <ul class="tab-group">
+      	<li class="tab active"><a href="/jobster/login">Log In</a></li>
+        <li class="tab"><a href="/jobster/signup">Sign Up</a></li>
+        
+      </ul>
+      
+      <div class="tab-content">
+      	
+      	<div id="login">   
+          <h1>Welcome Back!</h1>
+
+				<c:if test="${not empty error}">
+					<div class="error">${error}</div>
+				</c:if>
+				<c:if test="${not empty msg}">
+					<div class="msg">${msg}</div>
+				</c:if>
+
+				
+			<form name='loginForm' action="<c:url value='/j_spring_security_check' />" method='POST'>
+          
+            <div class="field-wrap">
+            <input type="text" required autocomplete="off" name='username' placeholder="Enter username">
+          	</div>
+          
+          <div class="field-wrap">
+            <input type="password" required autocomplete="off" name='password' placeholder="Enter password">
+          </div>
+          
+          <p class="forgot"><a href="/jobster" class="forgot">Back to Homepage ..</a></p>
+          
+          <button class="button button-block" name="submit" type="submit">Log In</button>
+          
+            <input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
+          </form>
+
+        </div>
+      	
+        <div id="signup">   
+          <h1>Sign Up for Free</h1>
+          
+          <form action="/" method="post">
+          
+          <div class="top-row">
+            <div class="field-wrap">
+              <label>
+                First Name<span class="req">*</span>
+              </label>
+              <input type="text" required autocomplete="off" />
+            </div>
+        
+            <div class="field-wrap">
+              <label>
+                Last Name<span class="req">*</span>
+              </label>
+              <input type="text"required autocomplete="off"/>
+            </div>
+          </div>
+
+          <div class="field-wrap">
+            <label>
+              Email Address<span class="req">*</span>
+            </label>
+            <input type="email"required autocomplete="off"/>
+          </div>
+          
+          <div class="field-wrap">
+            <label>
+              Set A Password<span class="req">*</span>
+            </label>
+            <input type="password"required autocomplete="off"/>
+          </div>
+          
+          <button type="submit" class="button button-block">Get Started</button>
+          
+          </form>
+
+        </div>
+        
+        
+        
+      </div><!-- tab-content -->
+      
+</div> <!-- /form -->
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+	
+
 	
 </body>
 </html>

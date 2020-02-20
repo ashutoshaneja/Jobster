@@ -10,9 +10,9 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.paxcel.ashutoshaneja.jobster.model.SearchVacancy;
 import com.paxcel.ashutoshaneja.jobster.model.SeekerInfo;
 import com.paxcel.ashutoshaneja.jobster.model.Vacancy;
-import com.paxcel.ashutoshaneja.jobster.model.SearchVacancy;
 import com.paxcel.ashutoshaneja.jobster.util.ConnectionPool;
 
 @Repository
@@ -67,22 +67,33 @@ public class SeekerInfoDAOImpl implements SeekerInfoDAO {
 			PreparedStatement getVacancyPreparedStmt = fetchedConnection.prepareStatement(getVacancySQL);
 			resultset = getVacancyPreparedStmt.executeQuery();
 
-
+//			JSONObject jsonObject = new JSONObject();
+//			JSONArray array = new JSONArray();
+			
 			while(resultset.next()) {
 				Vacancy vacancyObj = new Vacancy();
 				vacancyObj.setCompanyName(resultset.getString("COMPANY_NAME"));
-				vacancyObj.setVacancyCount(resultset.getInt(2));
-				vacancyObj.setLocation(resultset.getString(3));
-				vacancyObj.setSkill(resultset.getString(4));
-				vacancyObj.setExperience(resultset.getInt(5));
+				vacancyObj.setVacancyCount(resultset.getInt("VACANCY_COUNT"));
+				vacancyObj.setLocation(resultset.getString("LOCATION"));
+				vacancyObj.setSkill(resultset.getString("SKILL"));
+				vacancyObj.setExperience(resultset.getInt("EXPERIENCE"));
 
 				vacancyList.add(vacancyObj);
+				
+//					JSONObject record = new JSONObject();
+//				   //Inserting key-value pairs into the json object
+//				   record.put("COMPANY_NAME", resultset.getString("COMPANY_NAME"));
+//				   record.put("VACANCY_COUNT", resultset.getInt("VACANCY_COUNT"));
+//				   record.put("LOCATION", resultset.getString("LOCATION"));
+//				   record.put("SKILL", resultset.getString("SKILL"));
+//				   record.put("Place_Of_Birth", resultset.getInt("EXPERIENCE"));
+//				   array.add(record);
 			}
 			return vacancyList;
 
 		}
 		catch(Exception exception) {
-			System.out.println("\nException while inserting data: " + exception.getMessage());
+			System.out.println("\nException while retrieving data: " + exception.getMessage());
 			appLogger.error(this.getClass().getSimpleName() +": Exception found in DB Connection." + exception.getMessage(), exception);
 			return null;
 		}
@@ -104,14 +115,14 @@ public class SeekerInfoDAOImpl implements SeekerInfoDAO {
 		try {
 
 			final String getVacancySQL;
-			if(vacancy.getLocation().equals("") && vacancy.getSkill().equals("")) {
+			if(vacancy.getLocation().equals("Any") && vacancy.getSkill().equals("Any")) {
 				getVacancySQL = "SELECT * FROM VACANCY INNER JOIN COMPANY_DATA ON VACANCY.COMPANY_ID=COMPANY_DATA.COMPANY_ID WHERE VACANCY.LOCATION IS NOT NULL AND VACANCY.SKILL IS NOT NULL";
 
 				PreparedStatement getVacancyPreparedStmt = fetchedConnection.prepareStatement(getVacancySQL);
 
 				resultset = getVacancyPreparedStmt.executeQuery();
 			}
-			else if(vacancy.getLocation().equals("")) {
+			else if(vacancy.getLocation().equals("Any")) {
 				getVacancySQL = "SELECT * FROM VACANCY INNER JOIN COMPANY_DATA ON VACANCY.COMPANY_ID=COMPANY_DATA.COMPANY_ID WHERE VACANCY.SKILL = ?";
 
 				PreparedStatement getVacancyPreparedStmt = fetchedConnection.prepareStatement(getVacancySQL);
@@ -119,7 +130,7 @@ public class SeekerInfoDAOImpl implements SeekerInfoDAO {
 				getVacancyPreparedStmt.setString(1, vacancy.getSkill());
 				resultset = getVacancyPreparedStmt.executeQuery();
 			}
-			else if(vacancy.getSkill().equals("")) {
+			else if(vacancy.getSkill().equals("Any")) {
 				getVacancySQL = "SELECT * FROM VACANCY INNER JOIN COMPANY_DATA ON VACANCY.COMPANY_ID=COMPANY_DATA.COMPANY_ID WHERE VACANCY.LOCATION = ?";
 
 				PreparedStatement getVacancyPreparedStmt = fetchedConnection.prepareStatement(getVacancySQL);
@@ -142,10 +153,10 @@ public class SeekerInfoDAOImpl implements SeekerInfoDAO {
 			while(resultset.next()) {
 				Vacancy vacancyObj = new Vacancy();
 				vacancyObj.setCompanyName(resultset.getString("COMPANY_NAME"));
-				vacancyObj.setVacancyCount(resultset.getInt(2));
-				vacancyObj.setLocation(resultset.getString(3));
-				vacancyObj.setSkill(resultset.getString(4));
-				vacancyObj.setExperience(resultset.getInt(5));
+				vacancyObj.setVacancyCount(resultset.getInt("VACANCY_COUNT"));
+				vacancyObj.setLocation(resultset.getString("LOCATION"));
+				vacancyObj.setSkill(resultset.getString("SKILL"));
+				vacancyObj.setExperience(resultset.getInt("EXPERIENCE"));
 
 				vacancyList.add(vacancyObj);
 			}

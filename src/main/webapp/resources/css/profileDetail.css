@@ -1,0 +1,7 @@
+body {
+  background-color: #F2F2F2;
+}
+
+.input-group-addon > .material-icons {
+  font-size: 1.1rem;
+}

@@ -5,51 +5,92 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Additional Recruiter Details</title>
-</head>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css'>
+<link rel="stylesheet" href="/jobster/resources/css/profileDetail.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!-- <script type="text/javascript">
-$(document).ready(function(){
-	$('input[type=submit]').click(function(e) {
-		   
-	      //Prevent default submission of form
-	      e.preventDefault();
-	      
-	      //Post data to corresponding controller
-	      $.post({
-	         url : 'recruiter/{username}',
-	         data : $('form[name=recruiterInfoForm]').serialize(),
-	         success : function(result) {
-	         		document.write(result);
-	         		document.close();
-	         }
-	      })
-	});
-});
-</script> -->
+<script type="text/javascript" src="/jobster/resources/js/backReload.js"></script>
+<script type="text/javascript">
+	if(!!window.performance && window.performance.navigation.type === 2)
+	{
+	    console.log('Reloading');
+	    window.location.reload();
+	}
+</script>
+</head>
+
 <body>
-	<h1>SIGNUP SUCCESSFULL!!</h1>
-	<br />
-	<h3>Kindly fill additional details, to complete your profile..</h3>
-	<form:form method="post" modelAttribute="recruiterInfo" name="recruiterInfoForm">
-		<table>
-			<tr>
-				<td>Username</td>
-				<td><form:input path="username" value="${username}" disabled="true" /></td>
-			</tr>
-			<tr>
-				<td>Company Name</td>
-				<td><form:input path="companyName"/></td>
-			</tr>
-			<tr>
-				<td>Designation</td>
-				<td><form:input path="designation"/></td>
-			</tr>
-			<tr>
-				<td colspan="2"><input type="submit"
-					value="Complete my Profile" /></td>
-			</tr>
-		</table>
-	</form:form>
+
+ <div class='container mt-5 mb-5'>
+  <form:form method="post" modelAttribute="recruiterInfo" name="recruiterInfoForm">
+    <div class='row mt-5'>
+      <div class='col-sm-12'>
+        <div class='card'>
+          <div class='card-header d-flex align-items-center'>
+            <i class='material-icons mr-2'>event</i>
+            Hey, Recruiter! Add Additional Profile Details to Complete your Profile
+          </div>
+          <div class='card-body'>
+            <div class='form-group'>
+              <label for='event_name'>Username</label>
+              <form:input path="username" value="${username}" disabled="true" cssClass="form-control" id="event_name" />
+             <!--  <input class='form-control' id='event_name' type='text' disabled> -->
+              <small class='form-text text-muted' id='emailHelp'>
+                Disabled
+              </small>
+            </div>
+            <div class='form-row'>
+			 <div class='col-sm-12'>
+                <div class='form-group'>
+                  <label for='event_tags'>Organisation Name</label>
+                  <input class='form-control' id='event_tags' type='text' name="companyName">
+                  <small class='form-text text-muted' id='emailHelp'>
+                    Enter the Current Organisation's name
+                  </small>
+                </div>
+              </div>
+			</div>
+			<div class='form-row'>
+			 <div class='col-sm-12'>
+                <div class='form-group'>
+                  <label for='event_tags'>Designation</label>
+                  <input class='form-control' id='event_tags' type='text' name="designation">
+                  <small class='form-text text-muted' id='emailHelp'>
+                    Your designation in concerned organisation
+                  </small>
+                </div>
+              </div>
+			</div>
+            <div class='form-group'>
+              <label for='event_description'>Profile Bio</label>
+              <textarea class='form-control' id='event_description' placeholder='Write something about yourself . . .' rows='4'></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+     
+    <div class='form-group d-flex justify-content-end mt-3'>
+      <button class='btn d-flex align-items-center mr-3' type="reset">
+        <i class='material-icons mr-2'>close</i>
+        Reset Form
+      </button>
+      <button class='btn btn-primary d-flex align-items-center float-right' type="submit">
+        <i class='material-icons mr-2'>check</i>
+ 		Complete My Profile
+       </button>
+    </div>
+  </form:form>
+</div>
+<!-- partial -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js'></script>
+	
+
+
 </body>
 </html>
