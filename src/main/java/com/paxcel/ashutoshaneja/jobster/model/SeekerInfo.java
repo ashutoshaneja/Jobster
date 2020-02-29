@@ -1,6 +1,12 @@
 package com.paxcel.ashutoshaneja.jobster.model;
 
 import java.io.Serializable;
+
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+@Component
+@Scope("session")
 public class SeekerInfo implements Serializable {
 
 	/**
@@ -8,6 +14,7 @@ public class SeekerInfo implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	private int userID;
 	private String username;
 	private String location;
 	private String skill;
@@ -45,6 +52,12 @@ public class SeekerInfo implements Serializable {
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	public int getUserID() {
+		return userID;
+	}
+	public void setUserID(int userID) {
+		this.userID = userID;
 	}
 
 }

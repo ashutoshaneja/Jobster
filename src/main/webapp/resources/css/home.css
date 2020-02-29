@@ -6,7 +6,7 @@ html, body {
     font-family: 'Open Sans', sans-serif;
 }
 body {
-	background: url("https://media-exp1.licdn.com/dms/image/C561BAQHq4PykTU8eIw/company-background_10000/0?e=2159024400&v=beta&t=VdKXYwWLscwLSyKhMjPzqz-b6JL99b2t_zvzyBg78fs") no-repeat;
+	background: url("../img/home.jpg") no-repeat;
 	background-color: #cccccc;
     color: #fff;
 }
@@ -176,6 +176,16 @@ h1, h2, h3, h4, h5, h6 {
 .sign-in-outer {
   padding: 0;
 }
+#warning{
+	display: none;
+	color: red;
+	font-size: 16px;
+}
+#capslockWarning{
+	display: none;
+	color: red;
+	font-size: 16px;
+}
 /*
 * Intro
 */
@@ -193,11 +203,18 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 20px;
 }
 .intro-cont p a {
+  cursor: pointer;	
   color: #ccc;
 }
 .intro-cont p:last-child {
   margin-bottom: 0;
     margin-top: 40px;
+}
+
+#dynamicTime{
+	cursor: pointer;
+	font-weight: 600;
+	text-decoration: none;
 }
 
 ::-webkit-input-placeholder {

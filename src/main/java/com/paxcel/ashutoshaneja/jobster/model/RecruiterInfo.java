@@ -8,6 +8,7 @@ public class RecruiterInfo implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	private int userID;
 	private String companyName;
 	private String username;
 	private String designation;
@@ -32,6 +33,12 @@ public class RecruiterInfo implements Serializable {
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	public int getUserID() {
+		return userID;
+	}
+	public void setUserID(int userID) {
+		this.userID = userID;
 	}
 
 }

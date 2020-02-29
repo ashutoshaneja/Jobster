@@ -26,7 +26,7 @@ public class SignupDAOImpl implements SignupDAO {
 		Connection fetchedConnection = connectionpool.getConnection();
 		appLogger.info(this.getClass().getSimpleName() +":Connection fetched from Pool, Pool Size: "+connectionpool.getSize());
 		try {
-			final String checkUsernameSQL = "SELECT * FROM users WHERE USERNAME = ?";
+			final String checkUsernameSQL = "SELECT * FROM USER WHERE USERNAME = ?";
 			java.sql.PreparedStatement checkUsernamePreparedStmt = fetchedConnection.prepareStatement(checkUsernameSQL);
 			checkUsernamePreparedStmt.setString(1, userVO.getUsername());
 
@@ -36,7 +36,7 @@ public class SignupDAOImpl implements SignupDAO {
 			}
 			else {
 				boolean enabled = true;
-				final String signupSQL = "INSERT INTO users VALUES(?,?,?)";
+				final String signupSQL = "INSERT INTO USER(USERNAME, PASSWORD, ENABLED) VALUES(?,?,?)";
 				java.sql.PreparedStatement signupPreparedStmt = fetchedConnection.prepareStatement(signupSQL);
 
 				signupPreparedStmt.setString(1, userVO.getUsername());
@@ -46,17 +46,28 @@ public class SignupDAOImpl implements SignupDAO {
 				
 				signupPreparedStmt.executeUpdate();
 				
-				System.out.println("Inserted into users" + userVO.getUsername());
+				System.out.println(userVO.getUsername()+" - added to DB..");
 				
-				final String signupRoleSQL = "INSERT INTO user_roles(USERNAME, ROLE) VALUES (?,?)";
+				final String signupRoleSQL = "INSERT INTO USER_ROLE(USER_ID, ROLE) VALUES (?,?)";
 				PreparedStatement signupRolePreparedStmt = fetchedConnection.prepareStatement(signupRoleSQL);
 				
-				signupRolePreparedStmt.setString(1, userVO.getUsername());
+				final String getUserIDSQL = "SELECT USER_ID FROM USER WHERE USERNAME = ?";
+				PreparedStatement getIDPreparedStmt = fetchedConnection.prepareStatement(getUserIDSQL);
+				getIDPreparedStmt.setString(1, userVO.getUsername());
+				ResultSet getIDresultset = getIDPreparedStmt.executeQuery();
+				
+				int userID=0;
+				if(getIDresultset.next()) {
+					userID = getIDresultset.getInt("USER_ID");
+					userVO.setUserID(userID);
+				}
+				
+				signupRolePreparedStmt.setInt(1, userID);
 				signupRolePreparedStmt.setString(2, userVO.getRole());
 				
 				int i = signupRolePreparedStmt.executeUpdate();
 				
-				System.out.println("Inserted into users" + userVO.getUsername());
+				System.out.println("Role added for '" + userVO.getUsername()+"'");
 				appLogger.info(this.getClass().getSimpleName() +": "+ i+" records inserted");  
 
 				return "success";

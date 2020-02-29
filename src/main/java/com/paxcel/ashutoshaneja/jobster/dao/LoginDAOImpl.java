@@ -1,6 +1,7 @@
 package com.paxcel.ashutoshaneja.jobster.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import org.apache.log4j.Logger;
@@ -74,6 +75,34 @@ public class LoginDAOImpl implements LoginDAO {
 			System.out.println("\nException while inserting data: " + exception.getMessage());
 			appLogger.error(this.getClass().getSimpleName() +": Exception found in DB Connection." + exception.getMessage(), exception);
 			return "failed";
+		}
+		finally {
+			boolean releaseOutcome = connectionpool.releaseConnection(fetchedConnection);
+			appLogger.info(this.getClass().getSimpleName() +": Status of Connection Release: "+releaseOutcome+", Pool size:"+connectionpool.getSize());
+		}
+
+	}
+
+	@Override
+	public int getUserID(String username) {
+		Connection fetchedConnection = connectionpool.getConnection();
+		appLogger.info(this.getClass().getSimpleName() +":Connection fetched from Pool, Pool Size: "+connectionpool.getSize());
+		try {
+			final String getUserIDSQL = "SELECT USER_ID FROM USER WHERE USERNAME = ?";
+			PreparedStatement getIDPreparedStmt = fetchedConnection.prepareStatement(getUserIDSQL);
+			getIDPreparedStmt.setString(1, username);
+			ResultSet getIDresultset = getIDPreparedStmt.executeQuery();
+			
+			int userID=0;
+			if(getIDresultset.next()) {
+				userID = getIDresultset.getInt("USER_ID");
+			}
+			return userID;
+		}
+		catch(Exception exception) {
+			System.out.println("\nException while inserting data: " + exception.getMessage());
+			appLogger.error(this.getClass().getSimpleName() +": Exception found in DB Connection." + exception.getMessage(), exception);
+			return 0;
 		}
 		finally {
 			boolean releaseOutcome = connectionpool.releaseConnection(fetchedConnection);

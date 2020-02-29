@@ -1,10 +1,13 @@
 body {
   background-color: #111111;
+  overflow: none;
+  overflow-y: hidden; // hide vertical
+  overflow-x: hidden; // hide horizontal
 }
 
 .board {
   position: absolute;
-  top: 30%;
+  top: 10%;
   left: 50%;
   height: 150px;
   width: 500px;

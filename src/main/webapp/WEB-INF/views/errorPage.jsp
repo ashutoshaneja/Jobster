@@ -7,11 +7,12 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Error Encountered :(</title>
-<link rel='stylesheet' type="text/css" href="resources/css/errorPage.css">
+<link rel="icon" href="/jobster/resources/img/logo.png">
+<link rel='stylesheet' type="text/css" href="/jobster/resources/css/errorPage.css">
 <link href='https://fonts.googleapis.com/css?family=Monoton' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
- <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'>
-  </script><script  src="resources/js/errorPage.js"></script>
+<link rel="stylesheet" href="/jobster/resources/css/reset.min.css">
+ <script src='/jobster/resources/js/jquery.min.js'>
+  </script><script  src="/jobster/resources/js/errorPage.js"></script>
 </head>
 <body>
 <div class="board">
@@ -23,7 +24,6 @@
   </p>
   <button class="raise" onclick="javascript:history.back();">Go Back ..</button>
 </div>
-<!-- partial -->
 
 </body>
 </html>

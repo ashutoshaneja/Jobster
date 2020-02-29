@@ -1,6 +1,7 @@
 package com.paxcel.ashutoshaneja.jobster.controller;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -26,12 +27,6 @@ public class RecruiterFeedController {
 	@RequestMapping(value="/recruiter/feed/{username}" , method = RequestMethod.GET)
 	public String setupVacancyForm(Model model) {
 		Vacancy vacancy = new Vacancy();
-		
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		  if (!(auth instanceof AnonymousAuthenticationToken)) {
-			UserDetails userDetail = (UserDetails) auth.getPrincipal();	
-			model.addAttribute("username", userDetail.getUsername());
-		  }
 		  
 		model.addAttribute("vacancy", vacancy);
 		return "recruiterFeed";
@@ -39,13 +34,24 @@ public class RecruiterFeedController {
 	
 	@RequestMapping(value="/recruiter/feed/{username}", method = RequestMethod.POST)
 	public String submitVacancyForm(Model model, @ModelAttribute("vacancy") Vacancy vacancy,
-			BindingResult result, SessionStatus status){
+			BindingResult result, SessionStatus status, HttpServletRequest request){
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		  if (!(auth instanceof AnonymousAuthenticationToken)) {
+			UserDetails userDetail = (UserDetails) auth.getPrincipal();	
+			vacancy.setUsername(userDetail.getUsername());
+		  }
+		  
+		vacancy.setUserID((int)request.getSession().getAttribute("userID"));
+	
 		if(manager.addVacancy(vacancy).equalsIgnoreCase("vacancyAdded")) {
 			String output = "Vacancy Added";
 			model.addAttribute("output", output);
 			return "recruiterFeed";
 		}
-		else
-			return "failed";
+		else {
+			model.addAttribute("error", "Couldn't Post Specified Vacancy due to 'Internal Issues' :(");
+			return "recruiterFeed";
+		}
 	}
 }

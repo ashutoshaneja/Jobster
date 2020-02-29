@@ -9,7 +9,9 @@ public class Vacancy implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	private int recordCount;
 	private int vacancyID;
+	private int userID;
 	private String username;
 	private String companyName;
 	private int vacancyCount;
@@ -61,6 +63,18 @@ public class Vacancy implements Serializable {
 	}
 	public void setVacancyID(int vacancyID) {
 		this.vacancyID = vacancyID;
+	}
+	public int getUserID() {
+		return userID;
+	}
+	public void setUserID(int userID) {
+		this.userID = userID;
+	}
+	public int getRecordCount() {
+		return recordCount;
+	}
+	public void setRecordCount(int recordCount) {
+		this.recordCount = recordCount;
 	}
 
 }

@@ -27,20 +27,22 @@ public class VacancyDAOImpl implements VacancyDAO {
 		appLogger.info(this.getClass().getSimpleName() +":Connection fetched from Pool, Pool Size: "+connectionpool.getSize());
 
 		try {
-			final String getCompanyIDSQL = "SELECT COMPANY_ID FROM RECRUITER_DETAIL WHERE USERNAME = ?";
+			final String getCompanyIDSQL = "SELECT COMPANY_ID FROM RECRUITER_DETAIL WHERE USER_ID = ?";
 			PreparedStatement getCompanyIDPreparedStmt = fetchedConnection.prepareStatement(getCompanyIDSQL);
-			System.out.println("Username" + vacancy.getUsername());
-			getCompanyIDPreparedStmt.setString(1, vacancy.getUsername());
+			
+			getCompanyIDPreparedStmt.setInt(1, vacancy.getUserID());
 			ResultSet resultset = getCompanyIDPreparedStmt.executeQuery();
+			
 			resultset.next();
+			
 			int companyID = resultset.getInt("COMPANY_ID");
 
 			System.out.println("Company ID "+companyID);
 
-			final String addVacancySQL = "INSERT INTO VACANCY(USERNAME, COMPANY_ID, VACANCY_COUNT, LOCATION, SKILL, EXPERIENCE) VALUES(?,?,?,?,?,?)";
+			final String addVacancySQL = "INSERT INTO VACANCY(RECRUITER_ID, COMPANY_ID, VACANCY_COUNT, LOCATION, SKILL, EXPERIENCE) VALUES(?,?,?,?,?,?)";
 			PreparedStatement vacancyPreparedStmt = fetchedConnection.prepareStatement(addVacancySQL);
 
-			vacancyPreparedStmt.setString(1, vacancy.getUsername());
+			vacancyPreparedStmt.setInt(1, vacancy.getUserID());
 			vacancyPreparedStmt.setInt(2, companyID);
 			vacancyPreparedStmt.setInt(3, vacancy.getVacancyCount());
 			vacancyPreparedStmt.setString(4, vacancy.getLocation());
@@ -48,7 +50,7 @@ public class VacancyDAOImpl implements VacancyDAO {
 			vacancyPreparedStmt.setInt(6, vacancy.getExperience());
 
 			int i = vacancyPreparedStmt.executeUpdate();  
-			appLogger.info(this.getClass().getSimpleName() +": "+ i+" vacancy inserted");  
+			appLogger.info(this.getClass().getSimpleName() +": "+ vacancy.getUsername()+" posted a vacancy.");  
 
 			return "vacancyAdded";
 		}

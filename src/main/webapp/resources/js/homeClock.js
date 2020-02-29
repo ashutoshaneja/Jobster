@@ -25,3 +25,17 @@ function checkTime(i) {
   if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
   return i;
 }
+
+function hand() {
+	  var a = document.getElementById("emoji");
+	  
+	  a.innerHTML = "&#x270B;&#x1F3FB;";
+	  setTimeout(function () {
+	      a.innerHTML = "&#x1F44B;&#x1F3FB;";
+	    }, 900);
+	  setTimeout(function () {
+	      a.innerHTML = "&#x270C;&#x1F3FB;";
+	    }, 1800);
+	}
+hand();
+setInterval(hand, 2700);

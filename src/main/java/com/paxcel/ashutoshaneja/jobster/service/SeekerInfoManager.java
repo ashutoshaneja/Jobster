@@ -10,10 +10,12 @@ import com.paxcel.ashutoshaneja.jobster.model.Vacancy;
 
 @Service
 public interface SeekerInfoManager {
-	
+
 	public String addSeekerInfo(SeekerInfo seeker);
-	
+
 	public List<Vacancy> showVacancy();
-	
+
 	public List<Vacancy> showFilteredVacancy(SearchVacancy vacancy);
+
+	public String applyVacancy(Vacancy applyVacancyObj);
 }

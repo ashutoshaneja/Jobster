@@ -21,4 +21,9 @@ public class LoginManagerImpl implements LoginManager {
 		return dao.sendResponse(userVO);
 	}
 
+	@Override
+	public int getUserID(String username) {
+		return dao.getUserID(username);
+	}
+
 }

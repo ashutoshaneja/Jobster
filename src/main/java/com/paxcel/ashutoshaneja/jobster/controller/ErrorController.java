@@ -36,7 +36,11 @@ public class ErrorController {
                 break;
             }
             case 404: {
-                errorMsg = "Resource   not   found";
+                errorMsg = "Resource not found";
+                break;
+            }
+            case 405: {
+                errorMsg = "Not Allowed";
                 break;
             }
             case 500: {
@@ -45,7 +49,7 @@ public class ErrorController {
             }
         }
         
-        appLogger.info(this.getClass().getSimpleName()+": Error Encountered - "+errorMsg);
+        appLogger.error(this.getClass().getSimpleName()+": Error Encountered - "+errorMsg);
 
         errorPage.addObject("errorCode", httpErrorCode);
         errorPage.addObject("errorMsg", errorMsg);

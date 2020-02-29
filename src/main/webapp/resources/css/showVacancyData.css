@@ -24,3 +24,78 @@ text-align: center;
 tr:hover{
     background-color: #5fcdbf;
 }
+ .apply-job{
+			background-color: white; 
+            border: 2px solid black; 
+            color: black; 
+            font-weight: 400;
+    		padding: 5px 10px;
+    		text-align: center;
+    		display: block;
+    		margin: 0px;
+    		width: 100%;
+            font-size: 15px; 
+            cursor: pointer; 
+            text-decoration: none;
+}
+.apply-job:hover {
+			background-color: #007bff; 
+            border: 1px dashed black; 
+            color: white;
+            font-size: 16px; 
+            box-shadow: 0 0.8em 0.8em -0.7em rgb(133, 86, 245, 1);
+  			-webkit-transform: translateY(-0.30em);
+          	transform: translateY(-0.30em);
+          	text-decoration: none;
+}
+
+.center {
+  margin-top: 10px;	
+  text-align: center;
+}
+
+.record-count{
+	display: inline-block;
+}
+
+.record-count a{
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .5s;
+  border: 1px solid #ddd;
+  margin: 0 4px;
+  margin-bottom: -27px;
+}
+
+.record-count a.active {
+  background-color: #007bff;
+  color: white;
+  border: 1px solid #4CAF50;
+}
+
+.record-count a:hover:not(.active) {background-color: #ddd;}
+
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .5s;
+  border: 1px solid #ddd;
+  margin: 0 4px;
+  margin-bottom: 40px;
+}
+
+.pagination a.active {
+  background-color: #007bff;
+  color: white;
+  border: 1px solid #4CAF50;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}

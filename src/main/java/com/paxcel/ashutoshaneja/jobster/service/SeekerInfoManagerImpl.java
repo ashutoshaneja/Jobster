@@ -29,4 +29,9 @@ public class SeekerInfoManagerImpl implements SeekerInfoManager {
 	public List<Vacancy> showFilteredVacancy(SearchVacancy vacancy) {
 		return dao.showFilteredVacancy(vacancy);
 	}
+
+	@Override
+	public String applyVacancy(Vacancy applyVacancyObj) {
+		return dao.applyVacancy(applyVacancyObj);
+	}
 }

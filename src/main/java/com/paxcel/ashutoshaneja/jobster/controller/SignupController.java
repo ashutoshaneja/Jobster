@@ -1,6 +1,7 @@
 package com.paxcel.ashutoshaneja.jobster.controller;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,15 +29,16 @@ public class SignupController
 		model.addAttribute("user", userVO);
 		return "signup";
 	}
-
+	
 	@RequestMapping(method = RequestMethod.POST)
 	public String submitForm(Model model, @ModelAttribute("user") UserVO userVO,
-			BindingResult result, SessionStatus status) {
+			BindingResult result, SessionStatus status, HttpServletRequest request) {
 		//Store the employee information in database
 		if(manager.createNewUser(userVO).equals("success")) {
-
-			status.setComplete();
-
+			
+			request.getSession().setAttribute("username", userVO.getUsername());
+			request.getSession().setAttribute("userID", userVO.getUserID());
+			   
 			if(userVO.getRole().equalsIgnoreCase("ROLE_SEEKER")) {
 				return "redirect:/seeker/"+userVO.getUsername();
 			}
@@ -45,14 +47,12 @@ public class SignupController
 			}
 		}
 		else if(manager.createNewUser(userVO).equals("duplicateUsername")) {
-			String output = "Username already exists!! Try something different.";
-			model.addAttribute("output", output);
-			return "failed";
+			model.addAttribute("msg", "Username already exists!! Try something different.");
+			return "signup";
 		}	
 		else {
-			String output = "Couldn't complete Signup Process due to Internal Issues :( \nTry after sometime";
-			model.addAttribute("output", output);
-			return "failed";
+			model.addAttribute("error", "Couldn't complete Signup Process due to Internal Issues :( \nTry after sometime");
+			return "signup";
 		}
 	}
 }

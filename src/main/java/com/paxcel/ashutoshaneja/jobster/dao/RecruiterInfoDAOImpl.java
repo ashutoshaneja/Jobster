@@ -16,10 +16,10 @@ public class RecruiterInfoDAOImpl implements RecruiterInfoDAO {
 
 	@Autowired
 	Logger appLogger;
-	
+
 	@Autowired
 	ConnectionPool connectionpool;
-	
+
 	@Override
 	public String addRecruiterInfo(RecruiterInfo recruiter) {
 		Connection fetchedConnection = connectionpool.getConnection();
@@ -29,19 +29,20 @@ public class RecruiterInfoDAOImpl implements RecruiterInfoDAO {
 			PreparedStatement getCompanyPreparedStmt = fetchedConnection.prepareStatement(getCompanySQL);
 			getCompanyPreparedStmt.setString(1, recruiter.getCompanyName());
 			ResultSet resultset = getCompanyPreparedStmt.executeQuery();
-			
+
 			int companyID;
 			if(resultset.next()==false) {
 				//Company doesn't exists in Former DB. Adding record
-				
+
 				final String addCompanySQL = "INSERT INTO COMPANY_DATA(COMPANY_NAME) VALUES(?)";
 				PreparedStatement addCompanyPreparedStmt = fetchedConnection.prepareStatement(addCompanySQL);
-				
+
 				addCompanyPreparedStmt.setString(1, recruiter.getCompanyName());
-				
+
 				int j = addCompanyPreparedStmt.executeUpdate();
-				appLogger.info(this.getClass().getSimpleName()+": "+ j +" COMPANY Inserted");
-				
+
+				appLogger.info(this.getClass().getSimpleName()+": "+ j +" COMPANY added to DB");
+
 				final String getIDSQL = "SELECT LAST_INSERT_ID()";
 				PreparedStatement getIDPreparedStmt = fetchedConnection.prepareStatement(getIDSQL);
 				ResultSet IDresultset = getIDPreparedStmt.executeQuery();
@@ -51,16 +52,17 @@ public class RecruiterInfoDAOImpl implements RecruiterInfoDAO {
 			else {
 				companyID = resultset.getInt("COMPANY_ID");
 			}
-			
+
 			final String addRecruiterInfoSQL = "INSERT INTO RECRUITER_DETAIL VALUES(?,?,?)";
 			java.sql.PreparedStatement recruiterInfoPreparedStmt = fetchedConnection.prepareStatement(addRecruiterInfoSQL);
 
 			recruiterInfoPreparedStmt.setInt(1, companyID);
-			recruiterInfoPreparedStmt.setString(2, recruiter.getUsername());
+			recruiterInfoPreparedStmt.setInt(2, recruiter.getUserID());
 			recruiterInfoPreparedStmt.setString(3, recruiter.getDesignation());
 
-			int i = recruiterInfoPreparedStmt.executeUpdate();  
-			appLogger.info(this.getClass().getSimpleName() +": "+ i+" record inserted");  
+			recruiterInfoPreparedStmt.executeUpdate();  
+
+			appLogger.info(this.getClass().getSimpleName() +": "+ recruiter.getUsername()+" completed Profile.");  
 
 			return "recruiterInfoAdded";
 		}

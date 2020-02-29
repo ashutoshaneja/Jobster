@@ -15,4 +15,6 @@ public interface SeekerInfoDAO {
 	public List<Vacancy> showVacancy();
 	
 	public List<Vacancy> showFilteredVacancy(SearchVacancy vacancy);
+	
+	public String applyVacancy(Vacancy applyVacancyObj);
 }

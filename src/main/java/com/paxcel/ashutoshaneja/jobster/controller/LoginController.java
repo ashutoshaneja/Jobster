@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.paxcel.ashutoshaneja.jobster.service.LoginManager;
@@ -31,7 +32,7 @@ public class LoginController
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView login(@RequestParam(value = "error", required = false) String error,
-			@RequestParam(value = "logout", required = false) String logout) {
+			@RequestParam(value = "logout", required = false) String logout, SessionStatus status) {
 
 		  ModelAndView model = new ModelAndView();
 		  
@@ -41,6 +42,7 @@ public class LoginController
 
 		  if (logout != null) {
 			model.addObject("msg", "You've been logged out successfully.");
+			status.setComplete();
 		  }
 		  model.setViewName("login");
 
@@ -55,6 +57,9 @@ public class LoginController
 		  if (!(auth instanceof AnonymousAuthenticationToken)) {
 			UserDetails userDetail = (UserDetails) auth.getPrincipal();	
 			username = userDetail.getUsername();
+			
+			request.getSession().setAttribute("username", username);
+			request.getSession().setAttribute("userID", manager.getUserID(username));
 		  }
 		
         if (request.isUserInRole("ROLE_SEEKER")) {

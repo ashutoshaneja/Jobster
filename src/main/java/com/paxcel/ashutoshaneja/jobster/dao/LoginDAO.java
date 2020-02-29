@@ -9,5 +9,7 @@ public interface LoginDAO {
 	public boolean handleLoginRequest(UserVO userVO);
 	
 	public String sendResponse(UserVO userVO);
+	
+	public int getUserID(String username);
 
 }

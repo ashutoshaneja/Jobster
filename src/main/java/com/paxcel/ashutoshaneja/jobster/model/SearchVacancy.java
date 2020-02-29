@@ -9,6 +9,7 @@ public class SearchVacancy implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	private int recordCount;
 	private String username;
 	private String location;
 	private String skill;
@@ -34,6 +35,12 @@ public class SearchVacancy implements Serializable {
 	}
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	public int getRecordCount() {
+		return recordCount;
+	}
+	public void setRecordCount(int recordCount) {
+		this.recordCount = recordCount;
 	}
 
 }

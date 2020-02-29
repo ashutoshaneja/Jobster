@@ -3,14 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <title>CodePen - CodePenChallenge: 403 Forbidden</title>
+<link rel="icon" href="/jobster/resources/img/logo.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link rel='stylesheet'
-	href='https://fonts.googleapis.com/css?family=Squada+One'>
-<link rel='stylesheet'
-	href='https://fonts.googleapis.com/css?family=Montserrat:500,600'>
-<link rel='stylesheet' type="text/css"
-	href="/jobster/resources/css/403page.css">
-
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Squada+One'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat:500,600'>
+<link rel='stylesheet' type="text/css" href="/jobster/resources/css/403page.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="/jobster/resources/js/backReload.js"></script>
 </head>
 <body>
 	<h1>HTTP Status 403 - Access is denied</h1>
