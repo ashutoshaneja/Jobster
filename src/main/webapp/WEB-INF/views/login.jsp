@@ -81,54 +81,14 @@ $(document).ready(function(){
 
         </div>
       	
-        <div id="signup">   
-          <h1>Sign Up for Free</h1>
-          
-          <form action="/" method="post">
-          
-          <div class="top-row">
-            <div class="field-wrap">
-              <label>
-                First Name<span class="req">*</span>
-              </label>
-              <input type="text" required autocomplete="off" />
-            </div>
-        
-            <div class="field-wrap">
-              <label>
-                Last Name<span class="req">*</span>
-              </label>
-              <input type="text"required autocomplete="off"/>
-            </div>
-          </div>
-
-          <div class="field-wrap">
-            <label>
-              Email Address<span class="req">*</span>
-            </label>
-            <input type="email"required autocomplete="off"/>
-          </div>
-          
-          <div class="field-wrap">
-            <label>
-              Set A Password<span class="req">*</span>
-            </label>
-            <input type="password"required autocomplete="off"/>
-          </div>
-          
-          <button type="submit" class="button button-block">Get Started</button>
-          
-          </form>
-
-        </div>
-        
-        
+        <div id="snackbar">Kindly login to initiate signup for your account.</div>
         
       </div><!-- tab-content -->
       
 </div> <!-- /form -->
 
 	<script type="text/javascript" src="/jobster/resources/js/jquery.min.js"></script>
+	<script type="text/javascript" src="resources/js/login&signup.js"></script>
 	<script type="text/javascript" src="resources/js/capslockWarning.js"></script>
 	<script type="text/javascript" src="resources/js/usernameValidation.js"></script>
 	<script type="text/javascript" src="resources/js/backReload.js"></script>

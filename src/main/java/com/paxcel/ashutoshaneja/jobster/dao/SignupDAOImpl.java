@@ -10,12 +10,16 @@ import org.springframework.stereotype.Repository;
 
 import com.paxcel.ashutoshaneja.jobster.model.UserVO;
 import com.paxcel.ashutoshaneja.jobster.util.ConnectionPool;
+import com.paxcel.ashutoshaneja.jobster.util.PasswordEncoderGenerator;
 
 @Repository
 public class SignupDAOImpl implements SignupDAO {
 
 	@Autowired
 	Logger appLogger;
+	
+	@Autowired
+	PasswordEncoderGenerator passwordEncoder;
 
 	@Autowired
 	ConnectionPool connectionpool;
@@ -40,8 +44,8 @@ public class SignupDAOImpl implements SignupDAO {
 				java.sql.PreparedStatement signupPreparedStmt = fetchedConnection.prepareStatement(signupSQL);
 
 				signupPreparedStmt.setString(1, userVO.getUsername());
-				//signupPreparedStmt.setString(2, GenerateSHAPassword.encryptThis(userVO.getPassword()));
-				signupPreparedStmt.setString(2, userVO.getPassword());
+				signupPreparedStmt.setString(2, passwordEncoder.encryptThis(userVO.getPassword()));
+				//signupPreparedStmt.setString(2, userVO.getPassword());
 				signupPreparedStmt.setBoolean(3, enabled);
 				
 				signupPreparedStmt.executeUpdate();

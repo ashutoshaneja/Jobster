@@ -23,32 +23,11 @@ public class HomeController {
 			@RequestParam(value = "logout", required = false) String logout) {
 
 		ModelAndView model = new ModelAndView();
-		if (error != null) {
-			model.addObject("error", "Invalid username and password!");
-		  }
 
-		  if (logout != null) {
-			model.addObject("msg", "You've been logged out successfully.");
-		  }
-		  model.setViewName("home");
-		
-		appLogger.info("-----------------------------------------------------------------------------\n"); 
+		appLogger.info("\n-----------------------------------------------------------------------------\n"); 
 		appLogger.info(this.getClass().getSimpleName()+": Welcome to Jobster... Application is LIVE!");
 
-		appLogger.info(this.getClass().getSimpleName()+": Returning Default Homepage!");
-
+		model.setViewName("home");
 		return model;
-	}
-
-	@RequestMapping(value = "/admin**", method = RequestMethod.GET)
-	public ModelAndView adminPage() {
-
-		ModelAndView model = new ModelAndView();
-		model.addObject("title", "Spring Security Hello World");
-		model.addObject("message", "This is protected page!");
-		model.setViewName("admin");
-
-		return model;
-
 	}
 }

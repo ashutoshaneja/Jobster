@@ -10,7 +10,7 @@ body {
 	background-color: #cccccc;
     color: #fff;
 }
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, span {
     font-family: 'Roboto', sans-serif;
 }
 .btn {
@@ -139,6 +139,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 #login-form input:not([type="submit"]):focus {
   border-bottom: 2px solid rgba(80, 144, 204,1);
+}
+.checkbox-group{
+display: inline-flex;
+}
+.checkbox-group span{
+	opacity:0.74;
+	font-weight: 200;
+	margin-top: 6px;
+	letter-spacing: 0.5px
+}
+#toggle-checkbox{
+	width:25px;
+	margin: 10px;
 }
 #login-form .input-group {
   width: 100%;

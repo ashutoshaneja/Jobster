@@ -10,7 +10,10 @@ public class SearchVacancy implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private int recordCount;
+	private int currentPageNo;
+	private int pageNo;
 	private String username;
+	private int userID;
 	private String location;
 	private String skill;
 	
@@ -41,6 +44,24 @@ public class SearchVacancy implements Serializable {
 	}
 	public void setRecordCount(int recordCount) {
 		this.recordCount = recordCount;
+	}
+	public int getPageNo() {
+		return pageNo;
+	}
+	public void setPageNo(int pageNo) {
+		this.pageNo = pageNo;
+	}
+	public int getUserID() {
+		return userID;
+	}
+	public void setUserID(int userID) {
+		this.userID = userID;
+	}
+	public int getCurrentPageNo() {
+		return currentPageNo;
+	}
+	public void setCurrentPageNo(int currentPageNo) {
+		this.currentPageNo = currentPageNo;
 	}
 
 }

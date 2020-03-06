@@ -34,4 +34,9 @@ public class SeekerInfoManagerImpl implements SeekerInfoManager {
 	public String applyVacancy(Vacancy applyVacancyObj) {
 		return dao.applyVacancy(applyVacancyObj);
 	}
+
+	@Override
+	public List<Vacancy> getPageRecord(SearchVacancy vacancyObj) {
+		return dao.getPageRecord(vacancyObj);
+	}
 }

@@ -2,6 +2,7 @@ package com.paxcel.ashutoshaneja.jobster.controller;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +18,7 @@ import com.paxcel.ashutoshaneja.jobster.service.SignupManager;
 
 @Controller
 @RequestMapping("/signup")
-@SessionAttributes("user")
+//@SessionAttributes("user")
 public class SignupController 
 {
 	@Resource
@@ -31,10 +32,15 @@ public class SignupController
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public String submitForm(Model model, @ModelAttribute("user") UserVO userVO,
+	public String submitForm(Model model, @Valid @ModelAttribute("user") UserVO userVO,
 			BindingResult result, SessionStatus status, HttpServletRequest request) {
 		//Store the employee information in database
-		if(manager.createNewUser(userVO).equals("success")) {
+		
+		if(result.hasErrors()) {
+			return "signup";
+		}
+		
+		if("success".equals(manager.createNewUser(userVO))) {
 			
 			request.getSession().setAttribute("username", userVO.getUsername());
 			request.getSession().setAttribute("userID", userVO.getUserID());
@@ -46,7 +52,7 @@ public class SignupController
 				return "redirect:/recruiter/"+userVO.getUsername();
 			}
 		}
-		else if(manager.createNewUser(userVO).equals("duplicateUsername")) {
+		else if("duplicateUsername".equalsIgnoreCase(manager.createNewUser(userVO))) {
 			model.addAttribute("msg", "Username already exists!! Try something different.");
 			return "signup";
 		}	

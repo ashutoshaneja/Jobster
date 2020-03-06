@@ -18,130 +18,7 @@
 <link rel="stylesheet" href="/jobster/resources/css/showVacancyData.css">
 <link rel="stylesheet" href="/jobster/resources/css/notification.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
-
-<!-- <script type="text/javascript">
-	$(document).ready(function() {
-		$('button[type=submit]#searchButton').click(function(e) {
-			   
-		     //Prevent default submission of form
-		     e.preventDefault();
-			
-		     //Post form data to corresponding controller
-			 $.post({
-				url : '${pageContext.request.userPrincipal.name}',
-				data : $('form[name=searchForm]').serialize(),
-				success : function(result) {
-					
-					$("#vacancyList > tbody").html("");
-					 console.log(result);
-					 if(!$.trim(result)){
-						 alert("No Vacancy Found");
-					 }
-					 
-					for(var i=0;i<(result.length);i++){ 
-						var table = document.getElementById("vacancyList").getElementsByTagName('tbody')[0];
-					    var newRow = table.insertRow(table.length);
-					    
-					    cell1 = newRow.insertCell(0);
-					    cell1.innerHTML = result[i].companyName;
-					    cell2 = newRow.insertCell(1);
-					    cell2.innerHTML = result[i].vacancyCount;
-					    cell3 = newRow.insertCell(2);
-					    cell3.innerHTML = result[i].location;
-					    cell4 = newRow.insertCell(3);
-					    cell4.innerHTML = result[i].skill;
-					    cell5 = newRow.insertCell(4);
-					    cell5.innerHTML = result[i].experience;
-					    hiddenCell1 = newRow.insertCell(5);
-					    hiddenCell1.innerHTML = result[i].vacancyID;
-					    hiddenCell1.style.visibility = 'hidden';
-					    cell6 = newRow.insertCell(6);
-					    cell6.innerHTML = '<a class="apply-job">Apply</a>'; 
-					}
-				}
-			})	
-		});
-		
-
-	});		 
-</script>
-
-<script type="text/javascript">
-$(document).ready(function(){
-	$('#vacancyList').on('click','.apply-job',function (e) {
-    	var selectedRow = this.parentElement.parentElement;
-    	var a = selectedRow.cells[0].innerHTML;
-    	var b = selectedRow.cells[1].innerHTML;
-    	var c = selectedRow.cells[2].innerHTML;
-        var d = selectedRow.cells[3].innerHTML;
-        var e = selectedRow.cells[4].innerHTML;
-        var f = selectedRow.cells[5].innerHTML;
-        
-       console.log(a+" : "+b+" "+c+" "+d+" "+e+" "+f);
-       
-	     //Post form data to corresponding controller
-		 $.get({
-			url : '${pageContext.request.userPrincipal.name}/applyVacancy',
-			data: {value: f},
-			success : function(result) {
-				alert(result);
-				selectedRow.cells[6].innerHTML = "Applied!";
-				$(".apply-job").removeAttr('href');
-			}
-		})	
-        
-    }); 	
-
-});
-</script>
-
-
-<script type="text/javascript">
-$(document).ready(function(){
-	$("#recordBox").change(function() {
-		$("#searchButton").click()
-    }); 	
-
-});
-</script>
-
-<script type="text/javascript">
-	$(document).ready(function() {
-
-			//Post form data to corresponding controller
-			$.post({
-				url : '${pageContext.request.userPrincipal.name}/showVacancyData',
-				data : $('form[name=searchForm]').serialize(),
-				success : function(result) {
-					 console.log(result);
-					 
-				 	for(var i=0;i<(result.length);i++){ 
-					var table = document.getElementById("vacancyList").getElementsByTagName('tbody')[0];
-				    var newRow = table.insertRow(table.length);
-				    cell1 = newRow.insertCell(0);
-				    cell1.innerHTML = result[i].companyName;
-				    cell2 = newRow.insertCell(1);
-				    cell2.innerHTML = result[i].vacancyCount;
-				    cell3 = newRow.insertCell(2);
-				    cell3.innerHTML = result[i].location;
-				    cell4 = newRow.insertCell(3);
-				    cell4.innerHTML = result[i].skill;
-				    cell5 = newRow.insertCell(4);
-				    cell5.innerHTML = result[i].experience;
-				    hiddenCell1 = newRow.insertCell(5);
-				    var id = result[i].vacancyID;
-				    hiddenCell1.innerHTML = id;
-				    //hiddenCell1.innerHTML = '<input type="text" name="vacancyID" disabled class="vacancyID-input" value="' + id + '" >';
-				    //$('.vacancyID-input').val(result[i].vacancyID);
-				    hiddenCell1.style.visibility = 'hidden';
-				    cell6 = newRow.insertCell(6);
-				    cell6.innerHTML = '<a class="apply-job" href="javaScript:void(0);">Apply</a>'; 
-				}
-			}
-		});
-	});
-</script>
- -->
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
 
@@ -214,7 +91,7 @@ $(document).ready(function(){
 									<div class='form-group'>
 										<label for='event_category'>Location: </label> <select
 											class="selectpicker" multiple data-live-search="true"
-											class='form-control' class='event_category' name="location">
+											class='form-control' id="locationComboBox" class='event_category' name="location">
 											<option value='Any' selected>Any</option>
 											<option value='Mohali'>Mohali</option>
 											<option value='Delhi'>Delhi</option>
@@ -229,7 +106,7 @@ $(document).ready(function(){
 									<div class='form-group'>
 										<label for='event_category'>Skill: </label> <select
 											class="selectpicker" multiple data-live-search="true"
-											class='form-control' class='event_category' name="skill">
+											class='form-control' id="skillComboBox" class='event_category' name="skill">
 											<option value='Any' selected>Any</option>
 											<option value='Java'>Java</option>
 											<option value='Python'>Python</option>
@@ -282,15 +159,14 @@ $(document).ready(function(){
 						</div>
 						<div class='card-body'>
 							<div class='form-group' class="table-responsive">
-								<table id="vacancyList"
-									class="table table-light table-hover table-striped">
+								<table id="vacancyList" class="supTable table table-light table-hover table-striped">
 									<thead class="thead-light">
 										<tr id="tableTitle">
-											<th>Company Name</th>
-											<th>No. of Vacancies</th>
-											<th>Location</th>
-											<th>Skill</th>
-											<th>Experience (in Years)</th>
+											<th onclick="sortTable('supTable', 0)">Company Name <i class="fa fa-fw fa-sort"></i></th>
+											<th onclick="sortTable('supTable', 1)">No. of Vacancies <i class="fa fa-fw fa-sort"></i></th>
+											<th onclick="sortTable('supTable', 2)">Location <i class="fa fa-fw fa-sort"></i></th>
+											<th onclick="sortTable('supTable', 3)">Skill <i class="fa fa-fw fa-sort"></i></th>
+											<th onclick="sortTable('supTable', 4)">Experience (in Years) <i class="fa fa-fw fa-sort"></i></th>
 										</tr>
 									</thead>
 									<tbody id="vacancyListBody">
@@ -314,16 +190,61 @@ $(document).ready(function(){
 			</div>
 		</form:form>
 	</div>
-
+	<form:form modelAttribute="searchVacancy" method="post" name="searchForm">
 	<div class="center">
 		<div class="pagination">
-			<a href="#">&laquo;</a> <a href="#" class="active">1</a> <a href="#">2</a>
-			<a href="#">3</a> <a href="#">4</a> <a href="#">5</a> <a href="#">6</a>
-			<a href="#">&raquo;</a>
 		</div>
 	</div>
+	</form:form>
+	
+<script>
+function sortTable(tableClass, n) {
+	var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
 
+	table = document.getElementsByClassName(tableClass)[0];
+	switching = true;
+	dir = "asc";
+	while (switching) {
+	    switching = false;
+	    rows = table.getElementsByTagName("TR");
+	    for (i = 1; i < (rows.length - 1); i++) {
+	        shouldSwitch = false;
+	        x = rows[i].getElementsByTagName("TD")[n];
+	        y = rows[i + 1].getElementsByTagName("TD")[n];
+	                var cmpX=isNaN(parseInt(x.innerHTML))?x.innerHTML.toLowerCase():parseInt(x.innerHTML);
+	                var cmpY=isNaN(parseInt(y.innerHTML))?y.innerHTML.toLowerCase():parseInt(y.innerHTML);
+	cmpX=(cmpX=='-')?0:cmpX;
+	cmpY=(cmpY=='-')?0:cmpY;
+	        if (dir == "asc") {
+	            if (cmpX > cmpY) {
+	                shouldSwitch= true;
+	                break;
+	            }
+	        } else if (dir == "desc") {
+	            if (cmpX < cmpY) {
+	                shouldSwitch= true;
+	                break;
+	            }
+	        }
+	    }
+	    if (shouldSwitch) {
+	        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+	        switching = true;
+	        switchcount ++;      
+	    } else {
+	        if (switchcount == 0 && dir == "asc") {
+	            dir = "desc";
+	            switching = true;
+	        }
+	    }
+	}
+	}
+</script>
+
+
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	
 	<script type="text/javascript" src="/jobster/resources/js/backReload.js"></script>
 	<script type="text/javascript" src="/jobster/resources/js/popper.min.js"></script>
 	<script type="text/javascript" src="/jobster/resources/js/seekerFeedOperations.js"></script>

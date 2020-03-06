@@ -20,7 +20,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.paxcel.ashutoshaneja.jobster.service.LoginManager;
 
 @Controller
-//@RequestMapping("/login")
 @SessionAttributes("user")
 public class LoginController 
 {	
@@ -44,10 +43,9 @@ public class LoginController
 			model.addObject("msg", "You've been logged out successfully.");
 			status.setComplete();
 		  }
+		  
 		  model.setViewName("login");
-
 		  return model;
-
 		}
 	
 	@RequestMapping("/sendLoginResponse")

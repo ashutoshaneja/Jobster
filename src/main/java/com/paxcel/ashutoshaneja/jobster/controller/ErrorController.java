@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-/**
- * Handles requests for the application home page.
- */
 
+/** This Controller deals with all errors encountered during the application usage. 
+ *  It provides custom view(.jsp) Page specific to the error
+ * @author Ashutosh
+ *
+ */
 @Controller
 public class ErrorController {
 	
@@ -56,8 +58,8 @@ public class ErrorController {
         return errorPage;
     }
      
+    // Finds error status code 
     private int getErrorCode(HttpServletRequest httpRequest) {
-        return (Integer) httpRequest
-          .getAttribute("javax.servlet.error.status_code");
+        return (Integer) httpRequest.getAttribute("javax.servlet.error.status_code");
     }
 }

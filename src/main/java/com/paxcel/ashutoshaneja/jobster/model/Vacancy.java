@@ -12,6 +12,8 @@ public class Vacancy implements Serializable {
 	private int recordCount;
 	private int vacancyID;
 	private int userID;
+	private int currentPageNo;
+	private int pages;
 	private String username;
 	private String companyName;
 	private int vacancyCount;
@@ -75,6 +77,18 @@ public class Vacancy implements Serializable {
 	}
 	public void setRecordCount(int recordCount) {
 		this.recordCount = recordCount;
+	}
+	public int getPages() {
+		return pages;
+	}
+	public void setPages(int pages) {
+		this.pages = pages;
+	}
+	public int getCurrentPageNo() {
+		return currentPageNo;
+	}
+	public void setCurrentPageNo(int currentPageNo) {
+		this.currentPageNo = currentPageNo;
 	}
 
 }

@@ -18,4 +18,6 @@ public interface SeekerInfoManager {
 	public List<Vacancy> showFilteredVacancy(SearchVacancy vacancy);
 
 	public String applyVacancy(Vacancy applyVacancyObj);
+	
+	public List<Vacancy> getPageRecord(SearchVacancy vacancyObj);
 }

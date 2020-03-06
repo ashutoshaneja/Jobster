@@ -3,6 +3,7 @@ package com.paxcel.ashutoshaneja.jobster.controller;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +28,9 @@ import com.paxcel.ashutoshaneja.jobster.service.SeekerInfoManager;
  */
 @Controller
 public class AdditionalDetailController {
+	
+	@Autowired
+	Logger appLogger;
 	
 	@Resource
 	SeekerInfoManager manager;

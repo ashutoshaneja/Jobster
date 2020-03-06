@@ -49,7 +49,7 @@ public class VacancyDAOImpl implements VacancyDAO {
 			vacancyPreparedStmt.setString(5, vacancy.getSkill());
 			vacancyPreparedStmt.setInt(6, vacancy.getExperience());
 
-			int i = vacancyPreparedStmt.executeUpdate();  
+			vacancyPreparedStmt.executeUpdate();  
 			appLogger.info(this.getClass().getSimpleName() +": "+ vacancy.getUsername()+" posted a vacancy.");  
 
 			return "vacancyAdded";

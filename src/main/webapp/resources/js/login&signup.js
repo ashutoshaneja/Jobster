@@ -1,4 +1,19 @@
-$('.form').find('input, textarea').on('keyup blur focus', function (e) {
+function showSnackbar() {
+  var x = document.getElementById("snackbar");
+  x.className = "show";
+  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 4000);
+}
+
+/*$(document).ready(function() {
+		$(document).on( 'frmPageChanged', function( event, form, response ) {
+			var x = document.getElementById("snackbar");
+			  x.className = "show";
+			  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 4000);
+			  console.log("inside fn()");
+	});
+});*/
+
+/*$('.form').find('input, textarea').on('keyup blur focus', function (e) {
   
   var $this = $(this),
       label = $this.prev('label');
@@ -40,4 +55,4 @@ $('.tab a').on('click', function (e) {
   
   $(target).fadeIn(600);
   
-});
+});*/

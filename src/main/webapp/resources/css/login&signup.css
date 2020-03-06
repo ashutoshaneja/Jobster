@@ -10,14 +10,9 @@ body {
   /* background: #c1bdba; */
   font-family: 'Titillium Web', sans-serif;
   background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("/jobster/resources/img/ideas.jpg") no-repeat;
-  background-size: 1364px 668px;	
-  
+  background-size: 1364px 685px;	
   opacity: 1;
-	/* background: #8360c3;  fallback for old browsers
-	background: -webkit-linear-gradient(to right, #2ebf91, #8360c3);  Chrome 10-25, Safari 5.1-6
-	background: linear-gradient(to right, #2ebf91, #8360c3); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+
-    */
- overflow: auto;
+  overflow: auto;
 }
 
 a {
@@ -36,7 +31,7 @@ a:hover {
   max-width: 650px;
   margin: 30px auto;
   border-radius: 4px;
-  box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+  box-shadow: 0 4px 5px 4px rgba(19, 35, 47, 0.3);
 }
 
 .tab-group {
@@ -162,7 +157,7 @@ textarea {
 
 .field-wrap {
   position: relative;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .top-row:after {
@@ -221,4 +216,45 @@ textarea {
   font-size: 18px;
   font-weight: 700;
   text-transform: capitalize;
+}
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -175px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 16px;
+  position: fixed;
+  z-index: 10;
+  left: 43%;
+  top: 140px;
+  font-size: 20px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 3.8s;
+  animation: fadein 0.5s, fadeout 0.5s 3.8s;
+}
+
+@-webkit-keyframes fadein {
+  from {top: 0; opacity: 0;} 
+  to {top: 70px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {top: 0; opacity: 0;}
+  to {top: 70px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {top: 70px; opacity: 1;} 
+  to {top: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {top: 70px; opacity: 1;}
+  to {top: 0; opacity: 0;}
 }

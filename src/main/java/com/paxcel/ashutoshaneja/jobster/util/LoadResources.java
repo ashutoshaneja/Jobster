@@ -19,11 +19,11 @@ import org.springframework.core.io.support.PropertiesLoaderUtils;
  *
  */
 @Configuration
-class LoadResources {
-
-
+public class LoadResources {
+	
 	@Bean
 	public Logger getLogger() {
+		
 		Logger appLogger=null;	
 
 		try {
@@ -32,12 +32,13 @@ class LoadResources {
 			Properties log4jProperties = new Properties();
 
 			Resource log4jPropertyResource = new ClassPathResource("log4j.properties");
-
-			log4jProperties = PropertiesLoaderUtils.loadProperties(log4jPropertyResource);
-			PropertyConfigurator.configure(log4jProperties);   
-			appLogger.setLevel(Level.INFO);
-			System.out.println("Logger active..");
-
+		    
+		    if (null != log4jPropertyResource) {
+		    	log4jProperties = PropertiesLoaderUtils.loadProperties(log4jPropertyResource);
+				PropertyConfigurator.configure(log4jProperties);   
+				appLogger.setLevel(Level.INFO);
+				System.out.println("Logger active..");
+		    }
 		}
 		catch (Exception exception){
 			System.out.println("Resources couldn't be loaded.. Aborting Application! :(");

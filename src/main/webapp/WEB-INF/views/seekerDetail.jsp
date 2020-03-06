@@ -132,7 +132,8 @@
 				</div>
 			</div>
 
-
+			<div id="snackbar">Invalid URL detected. Clearing URL</div>
+			
 			<div class='form-group d-flex justify-content-end mt-3'>
 				<button class='btn d-flex align-items-center mr-3' type="reset">
 					<i class='material-icons mr-2'>close</i> Reset Form
@@ -146,17 +147,26 @@
 		</form:form>
 	</div>
 	<script> 
+	function showSnackbar() {
+		  var x = document.getElementById("snackbar");
+		  x.className = "show";
+		  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 4000);
+		}
         function validateURL(e) { 
         	var expression =  /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi; 
           	var regex = new RegExp(expression); 
           	//var url = document.getElementsByClassName("resumeURL")[0].value;
           	//var url = document.querySelector('.resumeURL').value;
           	var url = e.target.value;
-          	alert(url); 
+            
             if (url.match(regex)) { 
-                alert("Valid URL " + url); 
+                console.log("Valid URL : "+url)
             } else { 
-                alert("Invalid URL " + url); 
+            	console.log("Invalid URL : "+url)
+                if(e.target.value.length>0){
+            	showSnackbar();
+            	e.target.value='';
+                }
             } 
         } 
     </script> 
