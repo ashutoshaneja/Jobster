@@ -63,10 +63,10 @@ public class SeekerInfoDAOImpl implements SeekerInfoDAO {
 
 	/*-------------------------------- Retrieve all vacancies after page load --------------------------------*/
 	@Override
-	public List<Vacancy> showVacancy() {
+	public List<Vacancy> showVacancy(int userID) {
 		Connection fetchedConnection = connectionpool.getConnection();
 		appLogger.info(this.getClass().getSimpleName() +":Connection fetched from Pool, Pool Size: "+connectionpool.getSize());
-
+		appLogger.info("Inside Show Vacancy DAO!!");
 		List<Vacancy> vacancyList = new ArrayList<Vacancy>();
 		ResultSet resultset = null;
 		try {
@@ -85,6 +85,16 @@ public class SeekerInfoDAOImpl implements SeekerInfoDAO {
 			else {
 				noOfPages = (counter/5)+1;
 			}
+			
+			final String getAppliedStatusSQL = "SELECT VACANCY_ID FROM APPLIED_JOBS WHERE EMPLOYEE_ID = ?";
+			PreparedStatement getAppliedStatusStmt = fetchedConnection.prepareStatement(getAppliedStatusSQL);
+			getAppliedStatusStmt.setInt(1, userID);
+			ResultSet appliedResultSet = getAppliedStatusStmt.executeQuery();
+			List<Integer> appliedList = new ArrayList<Integer>();
+			while(appliedResultSet.next()) {
+				appliedList.add(appliedResultSet.getInt("VACANCY_ID"));
+			}
+			appLogger.info("Applied Joblist for "+userID+" is: "+appliedList);
 
 			final String getVacancySQL = "SELECT * FROM VACANCY INNER JOIN COMPANY_DATA ON VACANCY.COMPANY_ID=COMPANY_DATA.COMPANY_ID LIMIT 5;";
 			PreparedStatement getVacancyPreparedStmt = fetchedConnection.prepareStatement(getVacancySQL);
@@ -100,6 +110,12 @@ public class SeekerInfoDAOImpl implements SeekerInfoDAO {
 				vacancyObj.setSkill(resultset.getString("SKILL"));
 				vacancyObj.setExperience(resultset.getInt("EXPERIENCE"));
 				vacancyObj.setPages(noOfPages);
+				if(appliedList.contains(resultset.getInt("VACANCY_ID"))) {
+					vacancyObj.setStatus(1);
+				}
+				else {
+					vacancyObj.setStatus(0);
+				}
 				vacancyList.add(vacancyObj);
 				counter++;
 			}
@@ -125,7 +141,7 @@ public class SeekerInfoDAOImpl implements SeekerInfoDAO {
 
 		Connection fetchedConnection = connectionpool.getConnection();
 		appLogger.info(this.getClass().getSimpleName() +":Connection fetched from Pool, Pool Size: "+connectionpool.getSize());
-
+		appLogger.info("Inside Filter DAO!!");
 		List<Vacancy> vacancyList = new ArrayList<Vacancy>();
 		ResultSet resultset;
 		try {
@@ -133,6 +149,17 @@ public class SeekerInfoDAOImpl implements SeekerInfoDAO {
 			appLogger.info("Location: "+vacancy.getLocation());
 			appLogger.info("Skill: "+vacancy.getSkill());
 			appLogger.info("Count: "+vacancy.getRecordCount());
+			
+			final String getAppliedStatusSQL = "SELECT VACANCY_ID FROM APPLIED_JOBS WHERE EMPLOYEE_ID = ?";
+			PreparedStatement getAppliedStatusStmt = fetchedConnection.prepareStatement(getAppliedStatusSQL);
+			getAppliedStatusStmt.setInt(1, vacancy.getUserID());
+			ResultSet appliedResultSet = getAppliedStatusStmt.executeQuery();
+			List<Integer> appliedList = new ArrayList<Integer>();
+			while(appliedResultSet.next()) {
+				appliedList.add(appliedResultSet.getInt("VACANCY_ID"));
+			}
+			appLogger.info("Applied Joblist for "+vacancy.getUserID()+" is: "+appliedList);
+
 
 
 			/*---------- Revamp Multiple Skills to ArrayList for Dynamic Query Creation ----------*/
@@ -154,7 +181,7 @@ public class SeekerInfoDAOImpl implements SeekerInfoDAO {
 
 			skillQuery.append("SKILL = '"+skillArrayList.get(skillArrayList.size()-1)+"') ");
 
-			appLogger.info("skillQuery: "+skillQuery);
+			appLogger.debug("skillQuery: "+skillQuery);
 
 
 			StringBuilder locationQuery = new StringBuilder();
@@ -164,122 +191,128 @@ public class SeekerInfoDAOImpl implements SeekerInfoDAO {
 			}
 			locationQuery.append(" LOCATION = '"+locationArrayList.get(locationArrayList.size()-1)+"') ");
 
-			appLogger.info("locationQuery: "+locationQuery);
+			appLogger.debug("locationQuery: "+locationQuery);
 
-						if(vacancy.getPageNo()==1) {
+			if(vacancy.getPageNo()==1) {
 
-			if(skillArrayList.contains("Any") && locationArrayList.contains("Any")) {
-				getVacancySQL = "SELECT * FROM VACANCY INNER JOIN COMPANY_DATA ON VACANCY.COMPANY_ID=COMPANY_DATA.COMPANY_ID WHERE VACANCY.SKILL IS NOT NULL AND VACANCY.LOCATION IS NOT NULL LIMIT ?"; 
-			}
-
-			else if(skillArrayList.contains("Any")) {
-				getVacancySQL = "SELECT * FROM VACANCY INNER JOIN COMPANY_DATA ON VACANCY.COMPANY_ID=COMPANY_DATA.COMPANY_ID WHERE VACANCY.SKILL IS NOT NULL AND "+locationQuery+" LIMIT ?"; 
-			}
-			else if(locationArrayList.contains("Any")) {
-				getVacancySQL = "SELECT * FROM VACANCY INNER JOIN COMPANY_DATA ON VACANCY.COMPANY_ID=COMPANY_DATA.COMPANY_ID WHERE VACANCY.LOCATION IS NOT NULL AND "+skillQuery+" LIMIT ?"; 
-			}
-			else {
-				getVacancySQL = "SELECT * FROM VACANCY INNER JOIN COMPANY_DATA ON VACANCY.COMPANY_ID=COMPANY_DATA.COMPANY_ID WHERE "+skillQuery+" AND "+locationQuery+" LIMIT ?"; 
-			}
-
-			appLogger.info("-> SQL TO RUN: "+getVacancySQL);
-			PreparedStatement getVacancyPreparedStmt = fetchedConnection.prepareStatement(getVacancySQL);
-
-			getVacancyPreparedStmt.setInt(1, vacancy.getRecordCount());
-
-			appLogger.info("Count: "+vacancy.getRecordCount());
-
-			resultset = getVacancyPreparedStmt.executeQuery();
-
-
-			int counter=0;
-			final String getCount = getVacancySQL.substring(0, getVacancySQL.length() - 7).replace(" * ", " COUNT(*) ");
-			appLogger.info("inside filter dao -> countSQL : "+getCount);
-			PreparedStatement getCountPreparedStmt = fetchedConnection.prepareStatement(getCount);
-			ResultSet countResultSet = getCountPreparedStmt.executeQuery();
-			if(countResultSet.next()){
-				counter = countResultSet.getInt(1);
-			}
-
-			int noOfPages = 0;
-			if(counter%(vacancy.getRecordCount())==0) {
-				noOfPages = counter/vacancy.getRecordCount();
-			}
-			else {
-				noOfPages = (counter/(vacancy.getRecordCount()))+1;
-			}
-
-			while(resultset.next()) {
-				Vacancy vacancyObj = new Vacancy();
-				vacancyObj.setVacancyID(resultset.getInt("VACANCY_ID"));
-				vacancyObj.setUserID(resultset.getInt("RECRUITER_ID"));
-				vacancyObj.setCompanyName(resultset.getString("COMPANY_NAME"));
-				vacancyObj.setVacancyCount(resultset.getInt("VACANCY_COUNT"));
-				vacancyObj.setLocation(resultset.getString("LOCATION"));
-				vacancyObj.setSkill(resultset.getString("SKILL"));
-				vacancyObj.setExperience(resultset.getInt("EXPERIENCE"));
-				vacancyObj.setPages(noOfPages);
-				vacancyList.add(vacancyObj);
-			}
-			return vacancyList;
-			}
-				else {
-					
-					if(skillArrayList.contains("Any") && locationArrayList.contains("Any")) {
-						getVacancySQL = "SELECT * FROM VACANCY INNER JOIN COMPANY_DATA ON VACANCY.COMPANY_ID=COMPANY_DATA.COMPANY_ID WHERE VACANCY.SKILL IS NOT NULL AND VACANCY.LOCATION IS NOT NULL LIMIT ?, ?"; 
-					}
-
-					else if(skillArrayList.contains("Any")) {
-						getVacancySQL = "SELECT * FROM VACANCY INNER JOIN COMPANY_DATA ON VACANCY.COMPANY_ID=COMPANY_DATA.COMPANY_ID WHERE VACANCY.SKILL IS NOT NULL AND "+locationQuery+" LIMIT ?, ?"; 
-					}
-					else if(locationArrayList.contains("Any")) {
-						getVacancySQL = "SELECT * FROM VACANCY INNER JOIN COMPANY_DATA ON VACANCY.COMPANY_ID=COMPANY_DATA.COMPANY_ID WHERE VACANCY.LOCATION IS NOT NULL AND "+skillQuery+" LIMIT ?, ?"; 
-					}
-					else {
-						getVacancySQL = "SELECT * FROM VACANCY INNER JOIN COMPANY_DATA ON VACANCY.COMPANY_ID=COMPANY_DATA.COMPANY_ID WHERE "+skillQuery+" AND "+locationQuery+" LIMIT ?, ?"; 
-					}
-
-					appLogger.info("-> page SQL TO RUN: "+getVacancySQL);
-					PreparedStatement getVacancyPreparedStmt = fetchedConnection.prepareStatement(getVacancySQL);
-					
-					getVacancyPreparedStmt.setInt(1, (vacancy.getRecordCount()*(vacancy.getPageNo()-1)));
-					getVacancyPreparedStmt.setInt(2, (vacancy.getRecordCount()*(vacancy.getPageNo())));
-
-					resultset = getVacancyPreparedStmt.executeQuery();
-					
-					appLogger.info("-->"+(vacancy.getRecordCount()*(vacancy.getPageNo()-1)));
-					appLogger.info("-->"+(vacancy.getRecordCount()*(vacancy.getPageNo())));
-					
-					while(resultset.next()) {
-						Vacancy vacancyObject = new Vacancy();
-						vacancyObject.setVacancyID(resultset.getInt("VACANCY_ID"));
-						vacancyObject.setUserID(resultset.getInt("RECRUITER_ID"));
-						vacancyObject.setCompanyName(resultset.getString("COMPANY_NAME"));
-						vacancyObject.setVacancyCount(resultset.getInt("VACANCY_COUNT"));
-						vacancyObject.setLocation(resultset.getString("LOCATION"));
-						vacancyObject.setSkill(resultset.getString("SKILL"));
-						vacancyObject.setExperience(resultset.getInt("EXPERIENCE"));
-
-						vacancyList.add(vacancyObject);
-					}
-					System.out.println(vacancyList);
-					return vacancyList;
-
-
+				if(skillArrayList.contains("Any") && locationArrayList.contains("Any")) {
+					getVacancySQL = "SELECT * FROM VACANCY INNER JOIN COMPANY_DATA ON VACANCY.COMPANY_ID=COMPANY_DATA.COMPANY_ID WHERE VACANCY.SKILL IS NOT NULL AND VACANCY.LOCATION IS NOT NULL LIMIT ?"; 
 				}
 
+				else if(skillArrayList.contains("Any")) {
+					getVacancySQL = "SELECT * FROM VACANCY INNER JOIN COMPANY_DATA ON VACANCY.COMPANY_ID=COMPANY_DATA.COMPANY_ID WHERE VACANCY.SKILL IS NOT NULL AND "+locationQuery+" LIMIT ?"; 
+				}
+				else if(locationArrayList.contains("Any")) {
+					getVacancySQL = "SELECT * FROM VACANCY INNER JOIN COMPANY_DATA ON VACANCY.COMPANY_ID=COMPANY_DATA.COMPANY_ID WHERE VACANCY.LOCATION IS NOT NULL AND "+skillQuery+" LIMIT ?"; 
+				}
+				else {
+					getVacancySQL = "SELECT * FROM VACANCY INNER JOIN COMPANY_DATA ON VACANCY.COMPANY_ID=COMPANY_DATA.COMPANY_ID WHERE "+skillQuery+" AND "+locationQuery+" LIMIT ?"; 
+				}
+
+				appLogger.debug("-> SQL TO RUN: "+getVacancySQL);
+				PreparedStatement getVacancyPreparedStmt = fetchedConnection.prepareStatement(getVacancySQL);
+
+				getVacancyPreparedStmt.setInt(1, vacancy.getRecordCount());
+
+				appLogger.debug("Count: "+vacancy.getRecordCount());
+
+				resultset = getVacancyPreparedStmt.executeQuery();
+
+
+				int counter=0;
+				final String getCount = getVacancySQL.substring(0, getVacancySQL.length() - 7).replace(" * ", " COUNT(*) ");
+				appLogger.info("inside filter dao -> countSQL : "+getCount);
+				PreparedStatement getCountPreparedStmt = fetchedConnection.prepareStatement(getCount);
+				ResultSet countResultSet = getCountPreparedStmt.executeQuery();
+				if(countResultSet.next()){
+					counter = countResultSet.getInt(1);
+				}
+
+				int noOfPages = 0;
+				if(counter%(vacancy.getRecordCount())==0) {
+					noOfPages = counter/vacancy.getRecordCount();
+				}
+				else {
+					noOfPages = (counter/(vacancy.getRecordCount()))+1;
+				}
+
+				while(resultset.next()) {
+					Vacancy vacancyObj = new Vacancy();
+					vacancyObj.setVacancyID(resultset.getInt("VACANCY_ID"));
+					vacancyObj.setUserID(resultset.getInt("RECRUITER_ID"));
+					vacancyObj.setCompanyName(resultset.getString("COMPANY_NAME"));
+					vacancyObj.setVacancyCount(resultset.getInt("VACANCY_COUNT"));
+					vacancyObj.setLocation(resultset.getString("LOCATION"));
+					vacancyObj.setSkill(resultset.getString("SKILL"));
+					vacancyObj.setExperience(resultset.getInt("EXPERIENCE"));
+					vacancyObj.setPages(noOfPages);
+					if(appliedList.contains(resultset.getInt("VACANCY_ID"))) {
+						vacancyObj.setStatus(1);
+					}
+					else {
+						vacancyObj.setStatus(0);
+					}
+					vacancyList.add(vacancyObj);
+				}
+				return vacancyList;
+			}
+			else {
+
+				if(skillArrayList.contains("Any") && locationArrayList.contains("Any")) {
+					getVacancySQL = "SELECT * FROM VACANCY INNER JOIN COMPANY_DATA ON VACANCY.COMPANY_ID=COMPANY_DATA.COMPANY_ID WHERE VACANCY.SKILL IS NOT NULL AND VACANCY.LOCATION IS NOT NULL LIMIT ?, ?"; 
+				}
+
+				else if(skillArrayList.contains("Any")) {
+					getVacancySQL = "SELECT * FROM VACANCY INNER JOIN COMPANY_DATA ON VACANCY.COMPANY_ID=COMPANY_DATA.COMPANY_ID WHERE VACANCY.SKILL IS NOT NULL AND "+locationQuery+" LIMIT ?, ?"; 
+				}
+				else if(locationArrayList.contains("Any")) {
+					getVacancySQL = "SELECT * FROM VACANCY INNER JOIN COMPANY_DATA ON VACANCY.COMPANY_ID=COMPANY_DATA.COMPANY_ID WHERE VACANCY.LOCATION IS NOT NULL AND "+skillQuery+" LIMIT ?, ?"; 
+				}
+				else {
+					getVacancySQL = "SELECT * FROM VACANCY INNER JOIN COMPANY_DATA ON VACANCY.COMPANY_ID=COMPANY_DATA.COMPANY_ID WHERE "+skillQuery+" AND "+locationQuery+" LIMIT ?, ?"; 
+				}
+
+				appLogger.debug("-> SQL TO RUN: "+getVacancySQL);
+				PreparedStatement getVacancyPreparedStmt = fetchedConnection.prepareStatement(getVacancySQL);
+
+				getVacancyPreparedStmt.setInt(1, (vacancy.getRecordCount()*(vacancy.getPageNo()-1)));
+				getVacancyPreparedStmt.setInt(2, (vacancy.getRecordCount()*(vacancy.getPageNo())));
+
+				resultset = getVacancyPreparedStmt.executeQuery();
+
+				appLogger.debug("-->"+(vacancy.getRecordCount()*(vacancy.getPageNo()-1)));
+				appLogger.debug("-->"+(vacancy.getRecordCount()*(vacancy.getPageNo())));
+
+				while(resultset.next()) {
+					Vacancy vacancyObject = new Vacancy();
+					vacancyObject.setVacancyID(resultset.getInt("VACANCY_ID"));
+					vacancyObject.setUserID(resultset.getInt("RECRUITER_ID"));
+					vacancyObject.setCompanyName(resultset.getString("COMPANY_NAME"));
+					vacancyObject.setVacancyCount(resultset.getInt("VACANCY_COUNT"));
+					vacancyObject.setLocation(resultset.getString("LOCATION"));
+					vacancyObject.setSkill(resultset.getString("SKILL"));
+					vacancyObject.setExperience(resultset.getInt("EXPERIENCE"));
+					if(appliedList.contains(resultset.getInt("VACANCY_ID"))) {
+						vacancyObject.setStatus(1);
+					}
+					else {
+						vacancyObject.setStatus(0);
+					}
+					vacancyList.add(vacancyObject);
+				}
+				System.out.println(vacancyList);
+				return vacancyList;
+			}
 		}
 		catch(Exception exception) {
 			System.out.println("\nException while inserting data: " + exception.getMessage());
 			appLogger.error(this.getClass().getSimpleName() +": Exception found in DB Connection." + exception.getMessage(), exception);
-
 		}
 		finally {
 			boolean releaseOutcome = connectionpool.releaseConnection(fetchedConnection);
 			appLogger.info(this.getClass().getSimpleName() +": Status of Connection Release: "+releaseOutcome+", Pool size:"+connectionpool.getSize());
 		}
 		return vacancyList;
-
 	}
 
 	/*-------------------------------- Save Seeker's details for specified Vacancy --------------------------------*/
@@ -311,104 +344,5 @@ public class SeekerInfoDAOImpl implements SeekerInfoDAO {
 			boolean releaseOutcome = connectionpool.releaseConnection(fetchedConnection);
 			appLogger.info(this.getClass().getSimpleName() +": Status of Connection Release: "+releaseOutcome+", Pool size:"+connectionpool.getSize());
 		}
-	}
-
-	@Override
-	public List<Vacancy> getPageRecord(SearchVacancy vacancyObj) {
-
-		Connection fetchedConnection = connectionpool.getConnection();
-		appLogger.info(this.getClass().getSimpleName() +":Connection fetched from Pool, Pool Size: "+connectionpool.getSize());
-
-		List<Vacancy> vacancyList = new ArrayList<Vacancy>();
-		ResultSet resultset;
-		try {
-			appLogger.info("Inside Page Record, Page no: "+vacancyObj.getPageNo());
-			appLogger.info("Inside Page Record, Page no: "+vacancyObj.getLocation());
-			appLogger.info("Inside Page Record, Page no: "+vacancyObj.getSkill());
-
-
-			/*---------- Revamp Multiple Skills to ArrayList for Dynamic Query Creation ----------*/
-			String[] skillArray = vacancyObj.getSkill().split(",");
-			List<String> skillList = Arrays.asList(skillArray);
-			ArrayList<String> skillArrayList = new ArrayList<String>(skillList);
-
-			/*---------- Revamp Multiple Locations to ArrayList for Dynamic Query Creation ----------*/
-			String[] locationArray = vacancyObj.getLocation().split(",");
-			List<String> locationList = Arrays.asList(locationArray);
-			ArrayList<String> locationArrayList = new ArrayList<String>(locationList);
-			final String getVacancySQL;
-
-			StringBuilder skillQuery = new StringBuilder();
-			skillQuery.append(" ( ");
-			for(int i=0;i<skillArrayList.size()-1;i++) {
-				skillQuery.append(" SKILL = '"+skillArrayList.get(i)+"' OR ");
-			}
-
-			skillQuery.append("SKILL = '"+skillArrayList.get(skillArrayList.size()-1)+"') ");
-
-			appLogger.info("skillQuery: "+skillQuery);
-
-
-			StringBuilder locationQuery = new StringBuilder();
-			locationQuery.append(" ( ");
-			for(int i=0;i<locationArrayList.size()-1;i++) {
-				locationQuery.append("LOCATION = '"+locationArrayList.get(i)+"' OR ");
-			}
-			locationQuery.append(" LOCATION = '"+locationArrayList.get(locationArrayList.size()-1)+"') ");
-
-			appLogger.info("locationQuery: "+locationQuery);
-
-
-
-			if(skillArrayList.contains("Any") && locationArrayList.contains("Any")) {
-				getVacancySQL = "SELECT * FROM VACANCY INNER JOIN COMPANY_DATA ON VACANCY.COMPANY_ID=COMPANY_DATA.COMPANY_ID WHERE VACANCY.SKILL IS NOT NULL AND VACANCY.LOCATION IS NOT NULL LIMIT ?, ?"; 
-			}
-
-			else if(skillArrayList.contains("Any")) {
-				getVacancySQL = "SELECT * FROM VACANCY INNER JOIN COMPANY_DATA ON VACANCY.COMPANY_ID=COMPANY_DATA.COMPANY_ID WHERE VACANCY.SKILL IS NOT NULL AND "+locationQuery+" LIMIT ?, ?"; 
-			}
-			else if(locationArrayList.contains("Any")) {
-				getVacancySQL = "SELECT * FROM VACANCY INNER JOIN COMPANY_DATA ON VACANCY.COMPANY_ID=COMPANY_DATA.COMPANY_ID WHERE VACANCY.LOCATION IS NOT NULL AND "+skillQuery+" LIMIT ?, ?"; 
-			}
-			else {
-				getVacancySQL = "SELECT * FROM VACANCY INNER JOIN COMPANY_DATA ON VACANCY.COMPANY_ID=COMPANY_DATA.COMPANY_ID WHERE "+skillQuery+" AND "+locationQuery+" LIMIT ?, ?"; 
-			}
-
-			appLogger.info("-> page SQL TO RUN: "+getVacancySQL);
-			PreparedStatement getVacancyPreparedStmt = fetchedConnection.prepareStatement(getVacancySQL);
-			
-			getVacancyPreparedStmt.setInt(1, (vacancyObj.getRecordCount()*(vacancyObj.getPageNo()-1)));
-			getVacancyPreparedStmt.setInt(2, (vacancyObj.getRecordCount()*(vacancyObj.getPageNo())));
-
-			resultset = getVacancyPreparedStmt.executeQuery();
-			
-			appLogger.info("-->"+(vacancyObj.getRecordCount()*(vacancyObj.getPageNo()-1)));
-			appLogger.info("-->"+(vacancyObj.getRecordCount()*(vacancyObj.getPageNo())));
-			
-			while(resultset.next()) {
-				Vacancy vacancyObject = new Vacancy();
-				vacancyObject.setVacancyID(resultset.getInt("VACANCY_ID"));
-				vacancyObject.setUserID(resultset.getInt("RECRUITER_ID"));
-				vacancyObject.setCompanyName(resultset.getString("COMPANY_NAME"));
-				vacancyObject.setVacancyCount(resultset.getInt("VACANCY_COUNT"));
-				vacancyObject.setLocation(resultset.getString("LOCATION"));
-				vacancyObject.setSkill(resultset.getString("SKILL"));
-				vacancyObject.setExperience(resultset.getInt("EXPERIENCE"));
-
-				vacancyList.add(vacancyObject);
-			}
-			System.out.println(vacancyList);
-			return vacancyList;
-		}
-		catch(Exception exception) {
-			System.out.println("\nException while inserting data: " + exception.getMessage());
-			appLogger.error(this.getClass().getSimpleName() +": Exception found in DB Connection." + exception.getMessage(), exception);
-			return null;
-		}
-		finally {
-			boolean releaseOutcome = connectionpool.releaseConnection(fetchedConnection);
-			appLogger.info(this.getClass().getSimpleName() +": Status of Connection Release: "+releaseOutcome+", Pool size:"+connectionpool.getSize());
-		}
-
 	}
 }

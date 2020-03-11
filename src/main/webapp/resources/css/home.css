@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700');
+@import url("https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap");
 html, body {
     height: 100%;
     overflow-x: hidden;
@@ -12,6 +13,7 @@ body {
 }
 h1, h2, h3, h4, h5, h6, span {
     font-family: 'Roboto', sans-serif;
+    cursor: default;
 }
 .btn {
     border-radius: 0;
@@ -50,16 +52,10 @@ h1, h2, h3, h4, h5, h6, span {
     margin-left: auto;
 }
 
-/* Padding for spacing */
-
 .inner {
     padding: 0;
     position: relative;
 }
-
-/*
- * Angled Section
-*/
 
 .site-wrapper {
     position: relative;
@@ -89,7 +85,6 @@ h1, h2, h3, h4, h5, h6, span {
     /* Handle the widths */
     .cover-container {
         width: 100%;
-        /* Must be percentage or pixels for horizontal alignment */
     }
 }
 @media (min-width: 1170px) {
@@ -202,14 +197,16 @@ display: inline-flex;
 /*
 * Intro
 */
-
 .page-intro {
     font-weight: 400;
     font-size: 65px;
     margin-top: -90px;
     margin-bottom: 20px;
+    cursor: url("../img/logo.png"), default;
 }
 .intro-cont p {
+	cursor: default;
+	font-size: 16px;
     font-weight: 600;
     color: #ccc;
     margin-bottom: 30px;
@@ -220,12 +217,47 @@ display: inline-flex;
   color: #ccc;
 }
 .intro-cont p:last-child {
-  margin-bottom: 0;
-    margin-top: 40px;
+	margin-bottom: 0;
+	margin-top: 40px;
+}
+
+.jobster{	
+	font-family: "Luckiest Guy", cursive;
+	color: #337ab7;;
+  	text-shadow: 0 0.1em 20px rgba(0, 0, 0, 1), 0.05em -0.03em 0 rgba(0, 0, 0, 1),
+    0.05em 0.005em 0 rgba(0, 0, 0, 1), 0em 0.08em 0 rgba(0, 0, 0, 1),
+    0.05em 0.08em 0 rgba(0, 0, 0, 1), 0px -0.03em 0 rgba(0, 0, 0, 1),
+    -0.03em -0.03em 0 rgba(0, 0, 0, 1), -0.03em 0.08em 0 rgba(0, 0, 0, 1), -0.03em 0 0 rgba(0, 0, 0, 1);
+}
+span {
+    transform: scale(0.9);
+    display: inline-block;
+}
+
+span:first-child {
+    animation: bop 1s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards infinite
+      alternate;
+  }
+
+@keyframes bop {
+  0% {
+    transform: scale(1.1);
+  }
+  50%,
+  100% {
+    transform: scale(1);
+  }
+}
+
+#emoji{
+	cursor: none;
 }
 
 #dynamicTime{
 	cursor: pointer;
+	font-size: 16px;
+	font-style: italic;
+	color: silver;
 	font-weight: 600;
 	text-decoration: none;
 }
@@ -270,6 +302,22 @@ display: inline-flex;
   font-size: 16px;
   text-transform: lowercase;
   font-weight: 300;
+}
+
+#dev{
+	text-align: right;
+	bottom: 0px;
+	margin-right: 112px;
+    color: #00ffff;
+    font-weight: 300px;
+    font-size: large;
+}
+.footer-link{
+	color: #aad7fd;
+}
+
+.footer-link:hover {
+	color: #fff;
 }
 
 @media screen and (max-width: 768px) {

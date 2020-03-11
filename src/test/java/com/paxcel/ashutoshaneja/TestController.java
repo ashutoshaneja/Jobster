@@ -74,7 +74,6 @@ public class TestController {
 	@BeforeClass
 	public static void setUp() {
 		System.out.println("-----> SETUP <-----");
-	
 	}
 
 	@Before
@@ -119,18 +118,14 @@ public class TestController {
 
 		//when(manager.createNewUser(userVO)).thenReturn("success11");
 		
-		
 		assertEquals("success", manager.createNewUser(userVO));
 
-	
-		
 	}
 	
 	@Test
 	public void testPostSignupforDuplicate() throws Exception {
 		this.mockMvc = MockMvcBuilders.standaloneSetup(signupController).setViewResolvers(viewResolver).build();
 
-		
 		UserVO userVO = new UserVO();
 		userVO.setPassword("123");
 		userVO.setUsername("amar");
@@ -144,7 +139,6 @@ public class TestController {
 //		this.mockMvc.perform(
 //				post("/signup").param("username", "abc").param("password", "123456").param("role", "ROLE_SEEKER"))
 //				.andExpect(status().isOk());
-	
 		
 	}
 }

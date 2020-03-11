@@ -19,7 +19,7 @@
 </head>
 <body onload="showSnackbar();">
 
-	<h1>New to #Jobster? Signup here</h1>
+	<h1 class="form-heading">New to <span class = "jobster">#</span><span class = "jobster">Jobster</span>  ? Signup here</h1>
 	<div class="container">
 		<div class="alert alert-dark alert-dismissible fade show">
 			<button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -109,7 +109,7 @@
 	<script type="text/javascript" src="resources/js/jquery.min.js"></script>
 	<script type="text/javascript" src="resources/js/popper.min.js"></script>
 	<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="resources/js/login&signup.js"></script>
+	<script type="text/javascript" src="resources/js/snackbar.js"></script>
 	<script type="text/javascript" src="resources/js/capslockWarning.js"></script>
 	<script type="text/javascript" src="resources/js/usernameValidation.js"></script>
 	<script type="text/javascript" src="resources/js/backReload.js"></script>

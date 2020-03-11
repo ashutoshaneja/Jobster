@@ -51,6 +51,10 @@ public class SeekerFeedController {
 				+ (int) request.getSession().getAttribute("userID"));
 		applyVacancy.setUserID((int) request.getSession().getAttribute("userID"));
 		applyVacancy.setUsername((String) request.getSession().getAttribute("username"));
+		
+		vacancy.setUserID((int) request.getSession().getAttribute("userID"));
+		vacancy.setUsername((String) request.getSession().getAttribute("username"));
+		
 		vacancy.setPageNo(1);
 		model.addAttribute("username", name);
 		model.addAttribute("applyVacancy", applyVacancy);
@@ -61,29 +65,15 @@ public class SeekerFeedController {
 
 	@RequestMapping(value = "/seeker/feed/{username}/showVacancyData", method = RequestMethod.POST)
 	public @ResponseBody List<Vacancy> showVacancy(HttpServletRequest request) {
-
-		return (manager.showVacancy());
-	}
-
-	@RequestMapping(value = "/seeker/feed/{username}", method = RequestMethod.POST)
-	public @ResponseBody List<Vacancy> filterVacancy(@RequestParam(value = "error", required = false) String error,
-			@ModelAttribute("searchVacancy") SearchVacancy vacancy, BindingResult result, SessionStatus status) {
-		ModelAndView model = new ModelAndView();
-
-		if (error != null) {
-			model.addObject("error", "Error Encountered, Connection Issues :(");
-		}
-		if (manager.showFilteredVacancy(vacancy).isEmpty()) {
-			model.addObject("output", "No vacancy found :(");
-		}
 		
-		System.out.println(vacancy.getPageNo()+" "+vacancy.getRecordCount());
-		return (manager.showFilteredVacancy(vacancy));
+		int userID = (int)request.getSession().getAttribute("userID");
+		appLogger.info("Loading Vacancies for UserID: "+userID);
+		return (manager.showVacancy(userID));
 	}
 	
 	@RequestMapping(value = "/seeker/feed/{username}/{pageNo}", method = RequestMethod.POST)
 	public @ResponseBody List<Vacancy> showVacancyPagination(@RequestParam(value = "error", required = false) String error,
-			@ModelAttribute("searchVacancy") SearchVacancy vacancy, @PathVariable("pageNo") int page , BindingResult result, SessionStatus status) {
+			@ModelAttribute("searchVacancy") SearchVacancy vacancy, HttpServletRequest request, @PathVariable("pageNo") int page , BindingResult result, SessionStatus status) {
 		ModelAndView model = new ModelAndView();
 
 		if (error != null) {
@@ -96,29 +86,11 @@ public class SeekerFeedController {
 		System.out.println("-> Page: "+page);
 		vacancy.setPageNo(page);
 		
-		System.out.println(vacancy.getPageNo()+" "+vacancy.getRecordCount());
+		
+		System.out.println("Pagination: "+(int)request.getSession().getAttribute("userID"));
+		vacancy.setUserID((int)request.getSession().getAttribute("userID"));
 		return (manager.showFilteredVacancy(vacancy));
 	}
-
-	/*
-	 * @RequestMapping(value="/seeker/feed/{username}/getPageRecord" , method =
-	 * RequestMethod.GET) public @ResponseBody List<Vacancy>
-	 * getPageRecord(@RequestBody SearchVacancy data, BindingResult result,
-	 * SessionStatus status, HttpServletRequest request) {
-	 * 
-	 * appLogger.info("Page no:" +
-	 * data.getPageNo()+" ,location: "+data.getLocation());
-	 * 
-	 * 
-	 * data.setUserID((int)request.getSession().getAttribute("userID"));
-	 * data.setUsername((String)request.getSession().getAttribute("username"));
-	 * 
-	 * 
-	 * appLogger.info("Inside Apply Job Controller: -> "+data.getPageNo());
-	 * 
-	 * 
-	 * return(manager.getPageRecord(data)); }
-	 */
 
 	@RequestMapping(value = "/seeker/feed/{username}/applyVacancy", method = RequestMethod.GET)
 	public @ResponseBody String applyVacancy(@RequestParam("value") int value,
@@ -136,9 +108,9 @@ public class SeekerFeedController {
 		applyVacancyObj.setUserID((int) request.getSession().getAttribute("userID"));
 		applyVacancyObj.setUsername(username);
 
-		appLogger.info("Inside Apply Job Controller: -> " + applyVacancyObj.getVacancyID());
-		appLogger.info("Inside Apply Job Controller: -> " + applyVacancyObj.getUserID());
-		appLogger.info("Inside Apply Job Controller: -> " + applyVacancyObj.getUsername());
+		appLogger.debug("Inside Apply Job Controller: -> " + applyVacancyObj.getVacancyID());
+		appLogger.debug("Inside Apply Job Controller: -> " + applyVacancyObj.getUserID());
+		appLogger.debug("Inside Apply Job Controller: -> " + applyVacancyObj.getUsername());
 
 		return (manager.applyVacancy(applyVacancyObj));
 	}

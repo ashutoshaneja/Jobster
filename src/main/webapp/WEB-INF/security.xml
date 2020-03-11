@@ -13,6 +13,7 @@
 		<intercept-url pattern="/home" access="permitAll" />
 		<intercept-url pattern="/login*" access="permitAll" />
 		<intercept-url pattern="/signup*" access="permitAll" />
+		<intercept-url pattern="/aboutMe" access="permitAll" />
 		<intercept-url pattern="/seeker/**/**" access="hasRole('ROLE_SEEKER')" />
 		<intercept-url pattern="/recruiter/feed/**" access="hasRole('ROLE_RECRUITER')" />
 		<intercept-url pattern="/recruiter/**" access="hasRole('ROLE_RECRUITER')" />

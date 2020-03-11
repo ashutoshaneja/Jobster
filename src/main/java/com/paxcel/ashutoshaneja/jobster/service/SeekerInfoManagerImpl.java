@@ -21,8 +21,8 @@ public class SeekerInfoManagerImpl implements SeekerInfoManager {
 	}
 
 	@Override
-	public List<Vacancy> showVacancy() {
-		return dao.showVacancy();
+	public List<Vacancy> showVacancy(int userID) {
+		return dao.showVacancy(userID);
 	}
 
 	@Override
@@ -35,8 +35,8 @@ public class SeekerInfoManagerImpl implements SeekerInfoManager {
 		return dao.applyVacancy(applyVacancyObj);
 	}
 
-	@Override
-	public List<Vacancy> getPageRecord(SearchVacancy vacancyObj) {
-		return dao.getPageRecord(vacancyObj);
-	}
+//	@Override
+//	public List<Vacancy> getPageRecord(SearchVacancy vacancyObj) {
+//		return dao.getPageRecord(vacancyObj);
+//	}
 }

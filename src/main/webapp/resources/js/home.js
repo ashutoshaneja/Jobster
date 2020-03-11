@@ -32,13 +32,13 @@ function hand() {
 	a.innerHTML = "&#x270B;&#x1F3FB;";
 	setTimeout(function () {
 		a.innerHTML = "&#x1F44B;&#x1F3FB;";
-	}, 1300);
+	}, 1600);
 	setTimeout(function () {
 		a.innerHTML = "&#x270C;&#x1F3FB;";
-	}, 2600);
+	}, 2800);
 }
 hand();
-setInterval(hand, 3900);
+setInterval(hand, 4200);
 
 function togglePassword() {
 	var x = document.getElementById("password-input");

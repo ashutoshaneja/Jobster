@@ -30,4 +30,12 @@ public class HomeController {
 		model.setViewName("home");
 		return model;
 	}
+	
+	@RequestMapping(value = { "/aboutMe"}, method = RequestMethod.GET)
+	public ModelAndView aboutMePage() {
+
+		ModelAndView model = new ModelAndView();
+		model.setViewName("aboutMe");
+		return model;
+	}
 }

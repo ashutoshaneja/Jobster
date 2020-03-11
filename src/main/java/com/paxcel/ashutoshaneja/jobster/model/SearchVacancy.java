@@ -16,6 +16,7 @@ public class SearchVacancy implements Serializable {
 	private int userID;
 	private String location;
 	private String skill;
+	private int status;
 	
 	public String getLocation() {
 		return location;
@@ -62,6 +63,12 @@ public class SearchVacancy implements Serializable {
 	}
 	public void setCurrentPageNo(int currentPageNo) {
 		this.currentPageNo = currentPageNo;
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
 	}
 
 }

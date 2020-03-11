@@ -20,6 +20,7 @@ public class Vacancy implements Serializable {
 	private String location;
 	private String skill;
 	private int experience;
+	private int status;
 	
 	public String getUsername() {
 		return username;
@@ -89,6 +90,12 @@ public class Vacancy implements Serializable {
 	}
 	public void setCurrentPageNo(int currentPageNo) {
 		this.currentPageNo = currentPageNo;
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
 	}
 
 }

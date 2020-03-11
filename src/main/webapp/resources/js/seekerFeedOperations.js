@@ -24,11 +24,14 @@ $(document).ready(function() {
 				hiddenCell1 = newRow.insertCell(5);
 				var id = result[i].vacancyID;
 				hiddenCell1.innerHTML = id;
-				//hiddenCell1.innerHTML = '<input type="text" name="vacancyID" disabled class="vacancyID-input" value="' + id + '" >';
-				//$('.vacancyID-input').val(result[i].vacancyID);
 				hiddenCell1.style.visibility = 'hidden';
 				cell6 = newRow.insertCell(6);
+				if(result[i].status==1){
+					cell6.innerHTML = "Applied!";
+				}
+				else{
 				cell6.innerHTML = '<a class="apply-job" href="javaScript:void(0);">Apply</a>'; 
+				}
 			}
 			
 			for(var j=0;j<(result[0].pages);j++){
@@ -87,7 +90,12 @@ $(document).ready(function() {
 					hiddenCell1.innerHTML = result[i].vacancyID;
 					hiddenCell1.style.visibility = 'hidden';
 					cell6 = newRow.insertCell(6);
-					cell6.innerHTML = '<a class="apply-job">Apply</a>'; 
+					if(result[i].status==1){
+						cell6.innerHTML = "Applied!";
+					}
+					else{
+					cell6.innerHTML = '<a class="apply-job" href="javaScript:void(0);">Apply</a>'; 
+					}
 				}
 				
 				$(".pagination").html("");
@@ -165,11 +173,14 @@ $(document).ready(function() {
 					hiddenCell1 = newRow.insertCell(5);
 					var id = result[i].vacancyID;
 					hiddenCell1.innerHTML = id;
-					//hiddenCell1.innerHTML = '<input type="text" name="vacancyID" disabled class="vacancyID-input" value="' + id + '" >';
-					//$('.vacancyID-input').val(result[i].vacancyID);
 					hiddenCell1.style.visibility = 'hidden';
 					cell6 = newRow.insertCell(6);
+					if(result[i].status==1){
+						cell6.innerHTML = "Applied!";
+					}
+					else{
 					cell6.innerHTML = '<a class="apply-job" href="javaScript:void(0);">Apply</a>'; 
+					}
 				}
 				var element = document.getElementsByClassName("active")[0];
 				   element.classList.remove("active");

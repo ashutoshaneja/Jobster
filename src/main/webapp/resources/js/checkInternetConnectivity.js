@@ -35,7 +35,7 @@ function showPopForOfflineConnection(){
     $("#search-button").prop('disabled', true);
     // Show the error with appropriate message title and description.
     $(".main-error-message").html("Connection Error");
-    $(".main-error-resolution").html(" It seems that your Internet Connection if offline.Please verify and try again later.");
+    $("#snackbar").html("It seems that your Internet Connection if offline.Please verify and try again later.");
     $(".extra-error-message").html("(This popup will automatically disappear once connection comes back to life)");
     // Addition of extra design to improve user experience when connection goes off.
     $('#internet-connection-status-dialogue').lightbox_me({

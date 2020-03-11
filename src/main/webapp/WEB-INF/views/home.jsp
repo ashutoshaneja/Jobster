@@ -7,6 +7,7 @@
 	<title>Home</title>
 	<link rel="icon" href="resources/img/logo.png">
 	<link rel='stylesheet' type="text/css" href='resources/css/bootstrap-3.3.7.min.css'>
+	
 	<link rel='stylesheet' type="text/css" href='resources/css/font-awesome.min.css'>
 	<link rel="stylesheet" type="text/css" href="resources/css/home.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/notification.css">
@@ -15,17 +16,17 @@
 <body onload="startTime()">
 
 	<div class="site-wrapper">
-
 		<div class="site-wrapper-inner clearfix">
 
 			<div class="cover-container container">
 
 				<div class="inner cover clearfix">
 					<div class="col-xs-12 col-sm-6 intro-cont">
-						<span id="typed"></span>
+						
 						<h1 class="page-intro">
-							Welcome to <span style="color: #337ab7;">Jobster</span> <span
-								id="emoji"></span>
+							Welcome to <!-- <span style="color: #337ab7;">Jobster</span> --> 
+							<span class = "jobster">Jobster</span>
+							<object id="emoji"></object>
 						</h1>
 						<p>Jobster is job search based application, built on top of
 							Spring MVC and Spring Security frameworks.</p>
@@ -34,13 +35,14 @@
 						</p>
 						<a href="/jobster/signup" class="btn signup">Sign Up</a>
 						<p>
-							Already on Jobster? <strong><a href="/jobster/login"><span
-									style="text-decoration: underline;">Login to Jobster ..</span></a></strong>
+							Already on Jobster? 
+							<strong><a href="/jobster/login" style = 'text-decoration: underline;'>
+							Login to Jobster ..</a></strong>
 						<p style="color: rgba(80, 144, 204, 0.9);">
-							Current Time: <a id="dynamicTime"></a><br /> - <a
-								target="_blank"
-								href="/jobster/resources/Documentation/index.html">Read
-								Project Documentation here</a>
+							Current Time: <a id="dynamicTime"></a>
+							<br /> 
+							- <a target="_blank" href="/jobster/resources/Documentation/index.html">
+							Read Project Documentation here</a>
 						</p>
 
 					</div>
@@ -75,7 +77,7 @@
 
 
 								<input class="btn" type="submit" value="Sign In" title="Sign In"
-									tabindex="3"> <a class="reset" href="#">Don't
+									tabindex="3"> <a class="reset">Don't
 									worry! Your data is safe with us.</a>
 
 								<div>
@@ -114,7 +116,13 @@
 
 				</div>
 			</div>
+			<div id = "dev">
+			<a href="/jobster/aboutMe" class="footer-link" title="Know more!">
+			Who Developed it?
+			</a>
+			</div>
 		</div>
+			<div id="snackbar"></div>
 	</div>
 
 	<script type="text/javascript" src="resources/js/jquery.min.js"></script>

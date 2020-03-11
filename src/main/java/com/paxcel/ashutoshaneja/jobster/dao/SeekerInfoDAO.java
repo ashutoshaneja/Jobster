@@ -12,11 +12,11 @@ public interface SeekerInfoDAO {
 
 	public String addSeekerInfo(SeekerInfo seeker);
 	
-	public List<Vacancy> showVacancy();
+	public List<Vacancy> showVacancy(int userID);
 	
 	public List<Vacancy> showFilteredVacancy(SearchVacancy vacancy);
 	
 	public String applyVacancy(Vacancy applyVacancyObj);
 	
-	public List<Vacancy> getPageRecord(SearchVacancy vacancyObj);
+	//public List<Vacancy> getPageRecord(SearchVacancy vacancyObj);
 }
