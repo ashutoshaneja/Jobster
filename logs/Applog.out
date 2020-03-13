@@ -6,4 +6,382 @@
 -----------------------------------------------------------------------------
 
  11 Mar 2020 18:46:47 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 12 Mar 2020 15:27:27 INFO  - [DispatcherServlet]:FrameworkServlet 'appServlet': initialization completed in 6738 ms
+ 12 Mar 2020 15:28:10 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 12 Mar 2020 15:28:10 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 12 Mar 2020 15:29:07 INFO  - [GLOBAL]:LoginDAOImpl:Connection fetched from Pool, Pool Size: 1
+ 12 Mar 2020 15:29:07 INFO  - [GLOBAL]:LoginDAOImpl: Status of Connection Release: true, Pool size:2
+ 12 Mar 2020 15:29:07 INFO  - [GLOBAL]:'ajay' Login Success - Returning Seeker feed 
+ 12 Mar 2020 15:29:07 INFO  - [GLOBAL]:Inside Seeker feed Controller - User: ajay , id: 38
+ 12 Mar 2020 15:29:08 INFO  - [GLOBAL]:Loading Vacancies for UserID: 38
+ 12 Mar 2020 15:29:08 INFO  - [GLOBAL]:SeekerInfoDAOImpl:Connection fetched from Pool, Pool Size: 1
+ 12 Mar 2020 15:29:08 INFO  - [GLOBAL]:Inside Show Vacancy DAO!!
+ 12 Mar 2020 15:29:08 INFO  - [GLOBAL]:Applied Joblist for 38 is: [6, 7, 8, 3, 10, 5]
+ 12 Mar 2020 15:29:08 INFO  - [GLOBAL]:SeekerInfoDAOImpl: Status of Connection Release: true, Pool size:2
+ 12 Mar 2020 15:29:11 INFO  - [GLOBAL]:SeekerInfoDAOImpl:Connection fetched from Pool, Pool Size: 1
+ 12 Mar 2020 15:29:11 INFO  - [GLOBAL]:Inside Filter DAO!!
+ 12 Mar 2020 15:29:11 INFO  - [GLOBAL]:Page no: 2
+ 12 Mar 2020 15:29:11 INFO  - [GLOBAL]:Location: Any
+ 12 Mar 2020 15:29:11 INFO  - [GLOBAL]:Skill: Any
+ 12 Mar 2020 15:29:11 INFO  - [GLOBAL]:Count: 5
+ 12 Mar 2020 15:29:11 INFO  - [GLOBAL]:Applied Joblist for 0 is: []
+ 12 Mar 2020 15:29:11 INFO  - [GLOBAL]:SeekerInfoDAOImpl: Status of Connection Release: true, Pool size:2
+ 12 Mar 2020 15:29:11 INFO  - [GLOBAL]:SeekerInfoDAOImpl:Connection fetched from Pool, Pool Size: 1
+ 12 Mar 2020 15:29:11 INFO  - [GLOBAL]:Inside Filter DAO!!
+ 12 Mar 2020 15:29:11 INFO  - [GLOBAL]:Page no: 2
+ 12 Mar 2020 15:29:11 INFO  - [GLOBAL]:Location: Any
+ 12 Mar 2020 15:29:11 INFO  - [GLOBAL]:Skill: Any
+ 12 Mar 2020 15:29:11 INFO  - [GLOBAL]:Count: 5
+ 12 Mar 2020 15:29:11 INFO  - [GLOBAL]:Applied Joblist for 38 is: [6, 7, 8, 3, 10, 5]
+ 12 Mar 2020 15:29:11 INFO  - [GLOBAL]:SeekerInfoDAOImpl: Status of Connection Release: true, Pool size:2
+ 12 Mar 2020 15:29:13 INFO  - [GLOBAL]:SeekerInfoDAOImpl:Connection fetched from Pool, Pool Size: 1
+ 12 Mar 2020 15:29:13 INFO  - [GLOBAL]:Inside Filter DAO!!
+ 12 Mar 2020 15:29:13 INFO  - [GLOBAL]:Page no: 1
+ 12 Mar 2020 15:29:13 INFO  - [GLOBAL]:Location: Any
+ 12 Mar 2020 15:29:13 INFO  - [GLOBAL]:Skill: Any
+ 12 Mar 2020 15:29:13 INFO  - [GLOBAL]:Count: 5
+ 12 Mar 2020 15:29:13 INFO  - [GLOBAL]:Applied Joblist for 0 is: []
+ 12 Mar 2020 15:29:13 INFO  - [GLOBAL]:inside filter dao -> countSQL : SELECT COUNT(*) FROM VACANCY INNER JOIN COMPANY_DATA ON VACANCY.COMPANY_ID=COMPANY_DATA.COMPANY_ID WHERE VACANCY.SKILL IS NOT NULL AND VACANCY.LOCATION IS NOT NULL 
+ 12 Mar 2020 15:29:13 INFO  - [GLOBAL]:SeekerInfoDAOImpl: Status of Connection Release: true, Pool size:2
+ 12 Mar 2020 15:29:13 INFO  - [GLOBAL]:SeekerInfoDAOImpl:Connection fetched from Pool, Pool Size: 1
+ 12 Mar 2020 15:29:13 INFO  - [GLOBAL]:Inside Filter DAO!!
+ 12 Mar 2020 15:29:13 INFO  - [GLOBAL]:Page no: 1
+ 12 Mar 2020 15:29:13 INFO  - [GLOBAL]:Location: Any
+ 12 Mar 2020 15:29:13 INFO  - [GLOBAL]:Skill: Any
+ 12 Mar 2020 15:29:13 INFO  - [GLOBAL]:Count: 5
+ 12 Mar 2020 15:29:13 INFO  - [GLOBAL]:Applied Joblist for 38 is: [6, 7, 8, 3, 10, 5]
+ 12 Mar 2020 15:29:13 INFO  - [GLOBAL]:inside filter dao -> countSQL : SELECT COUNT(*) FROM VACANCY INNER JOIN COMPANY_DATA ON VACANCY.COMPANY_ID=COMPANY_DATA.COMPANY_ID WHERE VACANCY.SKILL IS NOT NULL AND VACANCY.LOCATION IS NOT NULL 
+ 12 Mar 2020 15:29:13 INFO  - [GLOBAL]:SeekerInfoDAOImpl: Status of Connection Release: true, Pool size:2
+ 12 Mar 2020 15:29:15 INFO  - [GLOBAL]:SeekerInfoDAOImpl:Connection fetched from Pool, Pool Size: 1
+ 12 Mar 2020 15:29:15 INFO  - [GLOBAL]:Inside Filter DAO!!
+ 12 Mar 2020 15:29:15 INFO  - [GLOBAL]:Page no: 1
+ 12 Mar 2020 15:29:15 INFO  - [GLOBAL]:Location: Any
+ 12 Mar 2020 15:29:15 INFO  - [GLOBAL]:Skill: Any
+ 12 Mar 2020 15:29:15 INFO  - [GLOBAL]:Count: 10
+ 12 Mar 2020 15:29:15 INFO  - [GLOBAL]:Applied Joblist for 0 is: []
+ 12 Mar 2020 15:29:15 INFO  - [GLOBAL]:inside filter dao -> countSQL : SELECT COUNT(*) FROM VACANCY INNER JOIN COMPANY_DATA ON VACANCY.COMPANY_ID=COMPANY_DATA.COMPANY_ID WHERE VACANCY.SKILL IS NOT NULL AND VACANCY.LOCATION IS NOT NULL 
+ 12 Mar 2020 15:29:15 INFO  - [GLOBAL]:SeekerInfoDAOImpl: Status of Connection Release: true, Pool size:2
+ 12 Mar 2020 15:29:15 INFO  - [GLOBAL]:SeekerInfoDAOImpl:Connection fetched from Pool, Pool Size: 1
+ 12 Mar 2020 15:29:15 INFO  - [GLOBAL]:Inside Filter DAO!!
+ 12 Mar 2020 15:29:15 INFO  - [GLOBAL]:Page no: 1
+ 12 Mar 2020 15:29:15 INFO  - [GLOBAL]:Location: Any
+ 12 Mar 2020 15:29:15 INFO  - [GLOBAL]:Skill: Any
+ 12 Mar 2020 15:29:15 INFO  - [GLOBAL]:Count: 10
+ 12 Mar 2020 15:29:15 INFO  - [GLOBAL]:Applied Joblist for 38 is: [6, 7, 8, 3, 10, 5]
+ 12 Mar 2020 15:29:15 INFO  - [GLOBAL]:inside filter dao -> countSQL : SELECT COUNT(*) FROM VACANCY INNER JOIN COMPANY_DATA ON VACANCY.COMPANY_ID=COMPANY_DATA.COMPANY_ID WHERE VACANCY.SKILL IS NOT NULL AND VACANCY.LOCATION IS NOT NULL 
+ 12 Mar 2020 15:29:15 INFO  - [GLOBAL]:SeekerInfoDAOImpl: Status of Connection Release: true, Pool size:2
+ 12 Mar 2020 15:29:20 ERROR - [GLOBAL]:ErrorController: Error Encountered - Resource not found
+ 12 Mar 2020 15:29:21 ERROR - [GLOBAL]:ErrorController: Error Encountered - Resource not found
+ 12 Mar 2020 15:29:25 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 12 Mar 2020 15:29:25 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 12 Mar 2020 15:29:29 ERROR - [GLOBAL]:ErrorController: Error Encountered - Resource not found
+ 12 Mar 2020 15:29:30 ERROR - [GLOBAL]:ErrorController: Error Encountered - Resource not found
+ 12 Mar 2020 15:54:35 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 12 Mar 2020 15:54:35 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 12 Mar 2020 17:10:49 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 12 Mar 2020 17:10:49 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 12 Mar 2020 17:11:44 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 12 Mar 2020 17:11:44 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 12 Mar 2020 17:13:55 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 12 Mar 2020 17:13:55 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 12 Mar 2020 17:14:15 ERROR - [GLOBAL]:ErrorController: Error Encountered - Resource not found
+ 12 Mar 2020 17:14:16 ERROR - [GLOBAL]:ErrorController: Error Encountered - Resource not found
+ 12 Mar 2020 17:14:18 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 12 Mar 2020 17:14:18 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 12 Mar 2020 17:22:54 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 12 Mar 2020 17:22:54 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 12 Mar 2020 18:01:05 ERROR - [GLOBAL]:ErrorController: Error Encountered - Resource not found
+ 12 Mar 2020 18:05:02 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 12 Mar 2020 18:05:02 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 12 Mar 2020 18:11:03 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 12 Mar 2020 18:11:03 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 12 Mar 2020 18:11:19 INFO  - [GLOBAL]:LoginDAOImpl:Connection fetched from Pool, Pool Size: 1
+ 12 Mar 2020 18:11:19 INFO  - [GLOBAL]:LoginDAOImpl: Status of Connection Release: true, Pool size:2
+ 12 Mar 2020 18:11:19 INFO  - [GLOBAL]:'ajay' Login Success - Returning Seeker feed 
+ 12 Mar 2020 18:11:19 INFO  - [GLOBAL]:Inside Seeker feed Controller - User: ajay , id: 38
+ 12 Mar 2020 18:11:19 INFO  - [GLOBAL]:Loading Vacancies for UserID: 38
+ 12 Mar 2020 18:11:19 INFO  - [GLOBAL]:SeekerInfoDAOImpl:Connection fetched from Pool, Pool Size: 1
+ 12 Mar 2020 18:11:19 INFO  - [GLOBAL]:Inside Show Vacancy DAO!!
+ 12 Mar 2020 18:11:19 INFO  - [GLOBAL]:Applied Joblist for 38 is: [6, 7, 8, 3, 10, 5]
+ 12 Mar 2020 18:11:19 INFO  - [GLOBAL]:SeekerInfoDAOImpl: Status of Connection Release: true, Pool size:2
+ 12 Mar 2020 18:11:26 INFO  - [GLOBAL]:SeekerInfoDAOImpl:Connection fetched from Pool, Pool Size: 1
+ 12 Mar 2020 18:11:26 INFO  - [GLOBAL]:Inside Filter DAO!!
+ 12 Mar 2020 18:11:26 INFO  - [GLOBAL]:Page no: 2
+ 12 Mar 2020 18:11:26 INFO  - [GLOBAL]:Location: Any
+ 12 Mar 2020 18:11:26 INFO  - [GLOBAL]:Skill: Any
+ 12 Mar 2020 18:11:26 INFO  - [GLOBAL]:Count: 5
+ 12 Mar 2020 18:11:26 INFO  - [GLOBAL]:Applied Joblist for 0 is: []
+ 12 Mar 2020 18:11:26 INFO  - [GLOBAL]:SeekerInfoDAOImpl: Status of Connection Release: true, Pool size:2
+ 12 Mar 2020 18:11:26 INFO  - [GLOBAL]:SeekerInfoDAOImpl:Connection fetched from Pool, Pool Size: 1
+ 12 Mar 2020 18:11:26 INFO  - [GLOBAL]:Inside Filter DAO!!
+ 12 Mar 2020 18:11:26 INFO  - [GLOBAL]:Page no: 2
+ 12 Mar 2020 18:11:26 INFO  - [GLOBAL]:Location: Any
+ 12 Mar 2020 18:11:26 INFO  - [GLOBAL]:Skill: Any
+ 12 Mar 2020 18:11:26 INFO  - [GLOBAL]:Count: 5
+ 12 Mar 2020 18:11:26 INFO  - [GLOBAL]:Applied Joblist for 38 is: [6, 7, 8, 3, 10, 5]
+ 12 Mar 2020 18:11:26 INFO  - [GLOBAL]:SeekerInfoDAOImpl: Status of Connection Release: true, Pool size:2
+ 12 Mar 2020 18:11:28 INFO  - [GLOBAL]:SeekerInfoDAOImpl:Connection fetched from Pool, Pool Size: 1
+ 12 Mar 2020 18:11:28 INFO  - [GLOBAL]:Inside Filter DAO!!
+ 12 Mar 2020 18:11:28 INFO  - [GLOBAL]:Page no: 1
+ 12 Mar 2020 18:11:28 INFO  - [GLOBAL]:Location: Any
+ 12 Mar 2020 18:11:28 INFO  - [GLOBAL]:Skill: Any
+ 12 Mar 2020 18:11:28 INFO  - [GLOBAL]:Count: 5
+ 12 Mar 2020 18:11:28 INFO  - [GLOBAL]:Applied Joblist for 0 is: []
+ 12 Mar 2020 18:11:28 INFO  - [GLOBAL]:inside filter dao -> countSQL : SELECT COUNT(*) FROM VACANCY INNER JOIN COMPANY_DATA ON VACANCY.COMPANY_ID=COMPANY_DATA.COMPANY_ID WHERE VACANCY.SKILL IS NOT NULL AND VACANCY.LOCATION IS NOT NULL 
+ 12 Mar 2020 18:11:28 INFO  - [GLOBAL]:SeekerInfoDAOImpl: Status of Connection Release: true, Pool size:2
+ 12 Mar 2020 18:11:28 INFO  - [GLOBAL]:SeekerInfoDAOImpl:Connection fetched from Pool, Pool Size: 1
+ 12 Mar 2020 18:11:28 INFO  - [GLOBAL]:Inside Filter DAO!!
+ 12 Mar 2020 18:11:28 INFO  - [GLOBAL]:Page no: 1
+ 12 Mar 2020 18:11:28 INFO  - [GLOBAL]:Location: Any
+ 12 Mar 2020 18:11:28 INFO  - [GLOBAL]:Skill: Any
+ 12 Mar 2020 18:11:28 INFO  - [GLOBAL]:Count: 5
+ 12 Mar 2020 18:11:28 INFO  - [GLOBAL]:Applied Joblist for 38 is: [6, 7, 8, 3, 10, 5]
+ 12 Mar 2020 18:11:28 INFO  - [GLOBAL]:inside filter dao -> countSQL : SELECT COUNT(*) FROM VACANCY INNER JOIN COMPANY_DATA ON VACANCY.COMPANY_ID=COMPANY_DATA.COMPANY_ID WHERE VACANCY.SKILL IS NOT NULL AND VACANCY.LOCATION IS NOT NULL 
+ 12 Mar 2020 18:11:28 INFO  - [GLOBAL]:SeekerInfoDAOImpl: Status of Connection Release: true, Pool size:2
+ 12 Mar 2020 18:11:32 ERROR - [GLOBAL]:ErrorController: Error Encountered - Resource not found
+ 12 Mar 2020 18:11:32 ERROR - [GLOBAL]:ErrorController: Error Encountered - Resource not found
+ 12 Mar 2020 18:11:36 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 12 Mar 2020 18:11:36 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 12 Mar 2020 18:12:27 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 12 Mar 2020 18:12:27 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 12 Mar 2020 18:12:33 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 12 Mar 2020 18:12:33 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 12 Mar 2020 18:15:04 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 12 Mar 2020 18:15:04 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 12 Mar 2020 18:15:45 ERROR - [GLOBAL]:ErrorController: Error Encountered - Resource not found
+ 12 Mar 2020 18:15:45 ERROR - [GLOBAL]:ErrorController: Error Encountered - Resource not found
+ 12 Mar 2020 18:18:51 INFO  - [GLOBAL]:SignupDAOImpl:Connection fetched from Pool, Pool Size: 1
+ 12 Mar 2020 18:18:51 INFO  - [GLOBAL]:SignupDAOImpl: Status of Connection Release: true, Pool size:2
+ 12 Mar 2020 18:18:51 INFO  - [GLOBAL]:SignupDAOImpl:Connection fetched from Pool, Pool Size: 1
+ 12 Mar 2020 18:18:51 INFO  - [GLOBAL]:SignupDAOImpl: Status of Connection Release: true, Pool size:2
+ 12 Mar 2020 18:19:03 INFO  - [GLOBAL]:SignupDAOImpl:Connection fetched from Pool, Pool Size: 1
+ 12 Mar 2020 18:19:03 INFO  - [GLOBAL]:SignupDAOImpl: 1 records inserted
+ 12 Mar 2020 18:19:03 INFO  - [GLOBAL]:SignupDAOImpl: Status of Connection Release: true, Pool size:2
+ 12 Mar 2020 18:19:03 ERROR - [GLOBAL]:ErrorController: Error Encountered - Resource not found
+ 12 Mar 2020 18:19:03 ERROR - [GLOBAL]:ErrorController: Error Encountered - Resource not found
+ 12 Mar 2020 18:27:50 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 12 Mar 2020 18:27:50 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 12 Mar 2020 18:28:40 INFO  - [GLOBAL]:LoginDAOImpl:Connection fetched from Pool, Pool Size: 1
+ 12 Mar 2020 18:28:40 INFO  - [GLOBAL]:LoginDAOImpl: Status of Connection Release: true, Pool size:2
+ 12 Mar 2020 18:28:40 INFO  - [GLOBAL]:'oppo' Login Success - Returning Seeker feed 
+ 12 Mar 2020 18:28:40 INFO  - [GLOBAL]:Inside Seeker feed Controller - User: oppo , id: 39
+ 12 Mar 2020 18:28:41 INFO  - [GLOBAL]:Loading Vacancies for UserID: 39
+ 12 Mar 2020 18:28:41 INFO  - [GLOBAL]:SeekerInfoDAOImpl:Connection fetched from Pool, Pool Size: 1
+ 12 Mar 2020 18:28:41 INFO  - [GLOBAL]:Inside Show Vacancy DAO!!
+ 12 Mar 2020 18:28:41 INFO  - [GLOBAL]:Applied Joblist for 39 is: []
+ 12 Mar 2020 18:28:41 INFO  - [GLOBAL]:SeekerInfoDAOImpl: Status of Connection Release: true, Pool size:2
+ 12 Mar 2020 18:29:01 ERROR - [GLOBAL]:ErrorController: Error Encountered - Resource not found
+ 12 Mar 2020 18:29:01 ERROR - [GLOBAL]:ErrorController: Error Encountered - Resource not found
+ 12 Mar 2020 18:29:16 INFO  - [GLOBAL]:SignupDAOImpl:Connection fetched from Pool, Pool Size: 1
+ 12 Mar 2020 18:29:16 INFO  - [GLOBAL]:SignupDAOImpl: 1 records inserted
+ 12 Mar 2020 18:29:16 INFO  - [GLOBAL]:SignupDAOImpl: Status of Connection Release: true, Pool size:2
+ 12 Mar 2020 18:29:16 ERROR - [GLOBAL]:ErrorController: Error Encountered - Resource not found
+ 12 Mar 2020 18:32:58 INFO  - [DispatcherServlet]:FrameworkServlet 'appServlet': initialization completed in 3372 ms
+ 12 Mar 2020 18:32:59 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 12 Mar 2020 18:32:59 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 12 Mar 2020 18:33:34 WARN  - [PageNotFound]:Request method 'POST' not supported
+ 12 Mar 2020 18:33:34 WARN  - [PageNotFound]:Request method 'POST' not supported
+ 12 Mar 2020 18:34:03 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 12 Mar 2020 18:34:03 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 12 Mar 2020 18:34:04 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 12 Mar 2020 18:34:04 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 12 Mar 2020 18:34:07 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 12 Mar 2020 18:34:07 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 12 Mar 2020 18:34:13 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 12 Mar 2020 18:34:13 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 12 Mar 2020 18:34:15 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 12 Mar 2020 18:34:15 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 12 Mar 2020 18:34:20 ERROR - [GLOBAL]:ErrorController: Error Encountered - Resource not found
+ 12 Mar 2020 18:34:20 ERROR - [GLOBAL]:ErrorController: Error Encountered - Resource not found
+ 12 Mar 2020 18:35:14 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 12 Mar 2020 18:35:14 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 12 Mar 2020 18:43:04 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 12 Mar 2020 18:43:04 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 12 Mar 2020 18:43:11 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 12 Mar 2020 18:43:11 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 12 Mar 2020 18:43:14 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 12 Mar 2020 18:43:14 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 12 Mar 2020 18:43:16 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 12 Mar 2020 18:43:16 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 12 Mar 2020 18:44:00 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 12 Mar 2020 18:44:00 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 12 Mar 2020 18:45:01 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 12 Mar 2020 18:45:01 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 12 Mar 2020 18:45:08 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 12 Mar 2020 18:45:08 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 12 Mar 2020 18:45:11 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 12 Mar 2020 18:45:11 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 12 Mar 2020 18:46:52 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 12 Mar 2020 18:46:52 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 12 Mar 2020 18:49:04 ERROR - [GLOBAL]:ErrorController: Error Encountered - Resource not found
+ 12 Mar 2020 18:49:04 ERROR - [GLOBAL]:ErrorController: Error Encountered - Resource not found
+ 12 Mar 2020 18:49:09 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 12 Mar 2020 18:49:09 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 12 Mar 2020 18:49:11 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 12 Mar 2020 18:49:11 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 12 Mar 2020 18:50:59 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 12 Mar 2020 18:50:59 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 12 Mar 2020 18:51:30 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 12 Mar 2020 18:51:30 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 12 Mar 2020 18:51:42 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 12 Mar 2020 18:51:42 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 12 Mar 2020 18:53:12 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 12 Mar 2020 18:53:12 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 12 Mar 2020 18:53:43 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 12 Mar 2020 18:53:43 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 12 Mar 2020 18:54:13 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 12 Mar 2020 18:54:13 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 12 Mar 2020 18:54:47 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 12 Mar 2020 18:54:47 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 13 Mar 2020 15:36:28 INFO  - [DispatcherServlet]:FrameworkServlet 'appServlet': initialization completed in 4736 ms
+ 13 Mar 2020 15:36:29 INFO  - [GLOBAL]:
+-----------------------------------------------------------------------------
+
+ 13 Mar 2020 15:36:29 INFO  - [GLOBAL]:HomeController: Welcome to Jobster... Application is LIVE!
+ 13 Mar 2020 15:43:04 INFO  - [XmlWebApplicationContext]:Closing WebApplicationContext for namespace 'appServlet-servlet': startup date [Fri Mar 13 15:36:23 IST 2020]; parent: Root WebApplicationContext
+ 13 Mar 2020 15:43:18 INFO  - [DispatcherServlet]:FrameworkServlet 'appServlet': initialization completed in 4910 ms
+ 13 Mar 2020 16:18:13 INFO  - [StandaloneMockMvcBuilder$StaticRequestMappingHandlerMapping]:Mapped "{[/403],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView com.paxcel.ashutoshaneja.jobster.controller.LoginController.accesssDenied()
+ 13 Mar 2020 16:18:13 INFO  - [StandaloneMockMvcBuilder$StaticRequestMappingHandlerMapping]:Mapped "{[/login],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView com.paxcel.ashutoshaneja.jobster.controller.LoginController.login(java.lang.String,java.lang.String,org.springframework.web.bind.support.SessionStatus)
+ 13 Mar 2020 16:18:13 INFO  - [StandaloneMockMvcBuilder$StaticRequestMappingHandlerMapping]:Mapped "{[/sendLoginResponse],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.paxcel.ashutoshaneja.jobster.controller.LoginController.defaultAfterLogin(javax.servlet.http.HttpServletRequest)
+ 13 Mar 2020 16:18:13 INFO  - [RequestMappingHandlerAdapter]:Looking for @ControllerAdvice: org.springframework.test.web.servlet.setup.StubWebApplicationContext@4a1c0752
+ 13 Mar 2020 16:18:13 INFO  - [MockServletContext]:Initializing Spring FrameworkServlet ''
+ 13 Mar 2020 16:18:13 INFO  - [TestDispatcherServlet]:FrameworkServlet '': initialization started
+ 13 Mar 2020 16:18:13 INFO  - [TestDispatcherServlet]:FrameworkServlet '': initialization completed in 5 ms
+ 13 Mar 2020 16:18:13 INFO  - [StandaloneMockMvcBuilder$StaticRequestMappingHandlerMapping]:Mapped "{[/aboutMe],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView com.paxcel.ashutoshaneja.jobster.controller.HomeController.aboutMePage()
+ 13 Mar 2020 16:18:13 INFO  - [StandaloneMockMvcBuilder$StaticRequestMappingHandlerMapping]:Mapped "{[/ || /home || /welcome**],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView com.paxcel.ashutoshaneja.jobster.controller.HomeController.welcomePage(java.lang.String,java.lang.String)
+ 13 Mar 2020 16:18:13 INFO  - [RequestMappingHandlerAdapter]:Looking for @ControllerAdvice: org.springframework.test.web.servlet.setup.StubWebApplicationContext@4a55a6e8
+ 13 Mar 2020 16:18:13 INFO  - [MockServletContext]:Initializing Spring FrameworkServlet ''
+ 13 Mar 2020 16:18:13 INFO  - [TestDispatcherServlet]:FrameworkServlet '': initialization started
+ 13 Mar 2020 16:18:13 INFO  - [TestDispatcherServlet]:FrameworkServlet '': initialization completed in 0 ms
+ 13 Mar 2020 16:18:13 INFO  - [StandaloneMockMvcBuilder$StaticRequestMappingHandlerMapping]:Mapped "{[/signup],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.paxcel.ashutoshaneja.jobster.controller.SignupController.submitForm(org.springframework.ui.Model,com.paxcel.ashutoshaneja.jobster.model.UserVO,org.springframework.validation.BindingResult,org.springframework.web.bind.support.SessionStatus,javax.servlet.http.HttpServletRequest)
+ 13 Mar 2020 16:18:13 INFO  - [StandaloneMockMvcBuilder$StaticRequestMappingHandlerMapping]:Mapped "{[/signup],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.paxcel.ashutoshaneja.jobster.controller.SignupController.setupForm(org.springframework.ui.Model)
+ 13 Mar 2020 16:18:13 INFO  - [RequestMappingHandlerAdapter]:Looking for @ControllerAdvice: org.springframework.test.web.servlet.setup.StubWebApplicationContext@65bb9029
+ 13 Mar 2020 16:18:13 INFO  - [MockServletContext]:Initializing Spring FrameworkServlet ''
+ 13 Mar 2020 16:18:13 INFO  - [TestDispatcherServlet]:FrameworkServlet '': initialization started
+ 13 Mar 2020 16:18:13 INFO  - [TestDispatcherServlet]:FrameworkServlet '': initialization completed in 1 ms
+ 13 Mar 2020 16:18:13 INFO  - [StandaloneMockMvcBuilder$StaticRequestMappingHandlerMapping]:Mapped "{[/signup],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.paxcel.ashutoshaneja.jobster.controller.SignupController.submitForm(org.springframework.ui.Model,com.paxcel.ashutoshaneja.jobster.model.UserVO,org.springframework.validation.BindingResult,org.springframework.web.bind.support.SessionStatus,javax.servlet.http.HttpServletRequest)
+ 13 Mar 2020 16:18:13 INFO  - [StandaloneMockMvcBuilder$StaticRequestMappingHandlerMapping]:Mapped "{[/signup],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.paxcel.ashutoshaneja.jobster.controller.SignupController.setupForm(org.springframework.ui.Model)
+ 13 Mar 2020 16:18:13 INFO  - [RequestMappingHandlerAdapter]:Looking for @ControllerAdvice: org.springframework.test.web.servlet.setup.StubWebApplicationContext@31ee96f4
+ 13 Mar 2020 16:18:13 INFO  - [MockServletContext]:Initializing Spring FrameworkServlet ''
+ 13 Mar 2020 16:18:13 INFO  - [TestDispatcherServlet]:FrameworkServlet '': initialization started
+ 13 Mar 2020 16:18:13 INFO  - [TestDispatcherServlet]:FrameworkServlet '': initialization completed in 1 ms
+ 13 Mar 2020 16:18:13 INFO  - [StandaloneMockMvcBuilder$StaticRequestMappingHandlerMapping]:Mapped "{[/signup],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.paxcel.ashutoshaneja.jobster.controller.SignupController.submitForm(org.springframework.ui.Model,com.paxcel.ashutoshaneja.jobster.model.UserVO,org.springframework.validation.BindingResult,org.springframework.web.bind.support.SessionStatus,javax.servlet.http.HttpServletRequest)
+ 13 Mar 2020 16:18:13 INFO  - [StandaloneMockMvcBuilder$StaticRequestMappingHandlerMapping]:Mapped "{[/signup],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.paxcel.ashutoshaneja.jobster.controller.SignupController.setupForm(org.springframework.ui.Model)
+ 13 Mar 2020 16:18:13 INFO  - [RequestMappingHandlerAdapter]:Looking for @ControllerAdvice: org.springframework.test.web.servlet.setup.StubWebApplicationContext@58399d82
+ 13 Mar 2020 16:18:13 INFO  - [MockServletContext]:Initializing Spring FrameworkServlet ''
+ 13 Mar 2020 16:18:13 INFO  - [TestDispatcherServlet]:FrameworkServlet '': initialization started
+ 13 Mar 2020 16:18:13 INFO  - [TestDispatcherServlet]:FrameworkServlet '': initialization completed in 1 ms
+ 13 Mar 2020 16:18:14 INFO  - [GenericApplicationContext]:Closing org.springframework.context.support.GenericApplicationContext@56ac3a89: startup date [Fri Mar 13 16:18:10 IST 2020]; root of context hierarchy
+ 13 Mar 2020 16:18:39 INFO  - [StandaloneMockMvcBuilder$StaticRequestMappingHandlerMapping]:Mapped "{[/login],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView com.paxcel.ashutoshaneja.jobster.controller.LoginController.login(java.lang.String,java.lang.String,org.springframework.web.bind.support.SessionStatus)
+ 13 Mar 2020 16:18:39 INFO  - [StandaloneMockMvcBuilder$StaticRequestMappingHandlerMapping]:Mapped "{[/403],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView com.paxcel.ashutoshaneja.jobster.controller.LoginController.accesssDenied()
+ 13 Mar 2020 16:18:39 INFO  - [StandaloneMockMvcBuilder$StaticRequestMappingHandlerMapping]:Mapped "{[/sendLoginResponse],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.paxcel.ashutoshaneja.jobster.controller.LoginController.defaultAfterLogin(javax.servlet.http.HttpServletRequest)
+ 13 Mar 2020 16:18:39 INFO  - [RequestMappingHandlerAdapter]:Looking for @ControllerAdvice: org.springframework.test.web.servlet.setup.StubWebApplicationContext@4a1c0752
+ 13 Mar 2020 16:18:39 INFO  - [MockServletContext]:Initializing Spring FrameworkServlet ''
+ 13 Mar 2020 16:18:39 INFO  - [TestDispatcherServlet]:FrameworkServlet '': initialization started
+ 13 Mar 2020 16:18:39 INFO  - [TestDispatcherServlet]:FrameworkServlet '': initialization completed in 5 ms
+ 13 Mar 2020 16:18:39 INFO  - [StandaloneMockMvcBuilder$StaticRequestMappingHandlerMapping]:Mapped "{[/aboutMe],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView com.paxcel.ashutoshaneja.jobster.controller.HomeController.aboutMePage()
+ 13 Mar 2020 16:18:39 INFO  - [StandaloneMockMvcBuilder$StaticRequestMappingHandlerMapping]:Mapped "{[/ || /home || /welcome**],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView com.paxcel.ashutoshaneja.jobster.controller.HomeController.welcomePage(java.lang.String,java.lang.String)
+ 13 Mar 2020 16:18:39 INFO  - [RequestMappingHandlerAdapter]:Looking for @ControllerAdvice: org.springframework.test.web.servlet.setup.StubWebApplicationContext@4a55a6e8
+ 13 Mar 2020 16:18:39 INFO  - [MockServletContext]:Initializing Spring FrameworkServlet ''
+ 13 Mar 2020 16:18:39 INFO  - [TestDispatcherServlet]:FrameworkServlet '': initialization started
+ 13 Mar 2020 16:18:39 INFO  - [TestDispatcherServlet]:FrameworkServlet '': initialization completed in 0 ms
+ 13 Mar 2020 16:18:39 INFO  - [StandaloneMockMvcBuilder$StaticRequestMappingHandlerMapping]:Mapped "{[/signup],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.paxcel.ashutoshaneja.jobster.controller.SignupController.setupForm(org.springframework.ui.Model)
+ 13 Mar 2020 16:18:39 INFO  - [StandaloneMockMvcBuilder$StaticRequestMappingHandlerMapping]:Mapped "{[/signup],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.paxcel.ashutoshaneja.jobster.controller.SignupController.submitForm(org.springframework.ui.Model,com.paxcel.ashutoshaneja.jobster.model.UserVO,org.springframework.validation.BindingResult,org.springframework.web.bind.support.SessionStatus,javax.servlet.http.HttpServletRequest)
+ 13 Mar 2020 16:18:39 INFO  - [RequestMappingHandlerAdapter]:Looking for @ControllerAdvice: org.springframework.test.web.servlet.setup.StubWebApplicationContext@65bb9029
+ 13 Mar 2020 16:18:39 INFO  - [MockServletContext]:Initializing Spring FrameworkServlet ''
+ 13 Mar 2020 16:18:39 INFO  - [TestDispatcherServlet]:FrameworkServlet '': initialization started
+ 13 Mar 2020 16:18:39 INFO  - [TestDispatcherServlet]:FrameworkServlet '': initialization completed in 1 ms
+ 13 Mar 2020 16:18:39 INFO  - [StandaloneMockMvcBuilder$StaticRequestMappingHandlerMapping]:Mapped "{[/signup],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.paxcel.ashutoshaneja.jobster.controller.SignupController.setupForm(org.springframework.ui.Model)
+ 13 Mar 2020 16:18:39 INFO  - [StandaloneMockMvcBuilder$StaticRequestMappingHandlerMapping]:Mapped "{[/signup],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.paxcel.ashutoshaneja.jobster.controller.SignupController.submitForm(org.springframework.ui.Model,com.paxcel.ashutoshaneja.jobster.model.UserVO,org.springframework.validation.BindingResult,org.springframework.web.bind.support.SessionStatus,javax.servlet.http.HttpServletRequest)
+ 13 Mar 2020 16:18:39 INFO  - [RequestMappingHandlerAdapter]:Looking for @ControllerAdvice: org.springframework.test.web.servlet.setup.StubWebApplicationContext@6b68cb27
+ 13 Mar 2020 16:18:39 INFO  - [MockServletContext]:Initializing Spring FrameworkServlet ''
+ 13 Mar 2020 16:18:39 INFO  - [TestDispatcherServlet]:FrameworkServlet '': initialization started
+ 13 Mar 2020 16:18:39 INFO  - [TestDispatcherServlet]:FrameworkServlet '': initialization completed in 1 ms
+ 13 Mar 2020 16:18:39 INFO  - [StandaloneMockMvcBuilder$StaticRequestMappingHandlerMapping]:Mapped "{[/signup],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.paxcel.ashutoshaneja.jobster.controller.SignupController.setupForm(org.springframework.ui.Model)
+ 13 Mar 2020 16:18:39 INFO  - [StandaloneMockMvcBuilder$StaticRequestMappingHandlerMapping]:Mapped "{[/signup],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.paxcel.ashutoshaneja.jobster.controller.SignupController.submitForm(org.springframework.ui.Model,com.paxcel.ashutoshaneja.jobster.model.UserVO,org.springframework.validation.BindingResult,org.springframework.web.bind.support.SessionStatus,javax.servlet.http.HttpServletRequest)
+ 13 Mar 2020 16:18:39 INFO  - [RequestMappingHandlerAdapter]:Looking for @ControllerAdvice: org.springframework.test.web.servlet.setup.StubWebApplicationContext@51dbd6e4
+ 13 Mar 2020 16:18:39 INFO  - [MockServletContext]:Initializing Spring FrameworkServlet ''
+ 13 Mar 2020 16:18:39 INFO  - [TestDispatcherServlet]:FrameworkServlet '': initialization started
+ 13 Mar 2020 16:18:39 INFO  - [TestDispatcherServlet]:FrameworkServlet '': initialization completed in 0 ms
+ 13 Mar 2020 16:18:39 INFO  - [GenericApplicationContext]:Closing org.springframework.context.support.GenericApplicationContext@56ac3a89: startup date [Fri Mar 13 16:18:35 IST 2020]; root of context hierarchy
  

@@ -9,7 +9,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Login to Jobster</title>
-<link rel="icon" href="/jobster/resources/img/logo.png">
+<!-- <link rel="icon" href="/jobster/resources/img/logo.png"> -->
 <link rel="stylesheet" type="text/css" href="resources/css/login&signup.css">
 <link rel="stylesheet" type="text/css" href="/jobster/resources/css/notification.css">
 <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>

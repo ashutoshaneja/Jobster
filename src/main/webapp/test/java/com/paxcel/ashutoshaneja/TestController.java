@@ -116,7 +116,7 @@ public class TestController {
 		userVO.setUsername("abc");
 		userVO.setRole("ROLE_SEEKER");
 
-		//when(manager.createNewUser(userVO)).thenReturn("success11");
+		when(manager.createNewUser(userVO)).thenReturn("success11");
 		
 		assertEquals("success", manager.createNewUser(userVO));
 

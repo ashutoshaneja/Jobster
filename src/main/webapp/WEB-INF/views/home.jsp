@@ -5,7 +5,7 @@
 <meta charset="ISO-8859-1">
 <head>
 	<title>Home</title>
-	<link rel="icon" href="resources/img/logo.png">
+	<!-- <link rel="icon" href="resources/img/logo.png"> -->
 	<link rel='stylesheet' type="text/css" href='resources/css/bootstrap-3.3.7.min.css'>
 	
 	<link rel='stylesheet' type="text/css" href='resources/css/font-awesome.min.css'>
